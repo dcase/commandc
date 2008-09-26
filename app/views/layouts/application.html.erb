@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title><%= yield :title %></title>
+	<%= stylesheet_link_tag 'screen' %>
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag 'modal-overlay' %>
+	
+</head>
+
+<body class="<%= yield :bodyclass %>">
+	<div id="container">
+		<div id="header">
+			<%= link_to image_tag( 'logo.png', :size => "191x45", :id => "logo", :alt => "COMMAND C logo" ), home_path %>
+			<p id="seo">Custom Web Site Design, SEO Services, Graphic Design Services, Product Photography</p>
+			<p id="tagline">we rock solid fundamentals<br />and sport cutting edge design</p>
+		</div><!-- end DIV 'header' -->
+		<div id="main">
+			<div id="menu">
+				<%= render :partial => "common/mainmenu" %>
+			</div><!-- end DIV 'menu' -->
+			<div id="sidebar"><%= yield :sidebar %></div><!-- end DIV 'sidebar' -->
+			<div id="content">
+				<%= yield  %>
+			</div><!-- end DIV 'content' -->
+		</div><!-- end DIV 'main' -->
+		<div id="footer">
+			<%= render :partial => "common/footer" %>
+			<%= render :partial => "common/clientlogin" %>
+		</div><!-- end DIV 'footer' -->
+	</div><!-- end DIV 'container' -->
+	<div id="copyright"></div><!-- end DIV 'copyright' -->
+	<% if authorized? %>
+	<div id="admin-controls">
+		<%= image_tag("fail.png", :size => "16x16") %>
+		<%= link_to( "logout", session_path, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+		<%= image_tag("add.png", :size => "16x16") %>
+		<%= link_to_show_overlay("add new client", new_client_path) %>
+		<%= image_tag("add.png", :size => "16x16") %>
+		<%= link_to("add new review", new_review_path) %>
+		<%= image_tag("add.png", :size => "16x16") %>
+		<%= link_to("add to portfolio", new_project_path) %>
+	</div>
+	<%= draggable_element "admin-controls" %>
+	<% end %>
+</body>
+</html>

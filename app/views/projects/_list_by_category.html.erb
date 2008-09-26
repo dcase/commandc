@@ -1,0 +1,7 @@
+<% unless child.projects.empty? %>
+	<ul class="project-list" style="display:none;" id="project-list<%= child.id %>">
+		<% for project in child.projects %>
+			<li><%= link_to project.name, project_path(project) %></li>
+		<% end%>
+	</ul>
+<% end %>

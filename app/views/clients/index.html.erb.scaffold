@@ -1,0 +1,24 @@
+<h1>Listing clients</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Url</th>
+    <th>Imagefile</th>
+  </tr>
+
+<% for client in @clients %>
+  <tr>
+    <td><%=h client.name %></td>
+    <td><%=h client.url %></td>
+    <td><%= image_tag(client.imagefile.public_filename(:small)) %></td>
+    <td><%= link_to_show_overlay 'Show', client %></td>
+    <td><%= link_to_show_overlay 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to_show_overlay 'New client', new_client_path %>

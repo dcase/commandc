@@ -1,0 +1,23 @@
+<p>
+  <b>Reviewer:</b>
+  <%=h @review.reviewer %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @review.content %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%=h @review.client %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @review.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

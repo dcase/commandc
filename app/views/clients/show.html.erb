@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @client.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @client.url %>
+</p>
+
+<p>
+  <b>Imagefile:</b>
+  <%=h @client.imagefile %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

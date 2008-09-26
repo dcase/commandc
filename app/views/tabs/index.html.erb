@@ -1,0 +1,28 @@
+<h1>Listing tabs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Imagefile</th>
+    <th>Project</th>
+    <th>Position</th>
+  </tr>
+
+<% for tab in @tabs %>
+  <tr>
+    <td><%=h tab.title %></td>
+    <td><%=h tab.content %></td>
+    <td><%=h tab.imagefile %></td>
+    <td><%=h tab.project %></td>
+    <td><%=h tab.position %></td>
+    <td><%= link_to 'Show', tab %></td>
+    <td><%= link_to 'Edit', edit_tab_path(tab) %></td>
+    <td><%= link_to 'Destroy', tab, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tab', new_tab_path %>

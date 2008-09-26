@@ -1,0 +1,30 @@
+<% # Begin Config section %>
+<% content_for :title do %>COMMAND C<% end %>
+<% content_for :bodyclass do %>home<% end %>
+<% # End Config section %>
+
+<p id="home-copy"><span class="bold red">COMMAND C</span> will manage your 
+<strong>website, branding, identity, internet 
+marketing,</strong> and <strong>photography</strong> needs
+ with customer service so personalized, 
+it will make all of the other relationships 
+in your life seem lacking. Don't blame 
+us for the ensuing couple's therapy, 
+we can't help it if you fall in love…</p>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "common/portfoliolink" %>
+	<% if @recent_projects %>
+		<div id="recent-projects">
+			<div class="large bold">recent projects:</div>
+			<% for project in @recent_projects %>
+				<% div_for project, :class => "recent-project" do %>
+					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb)), project_path(project) %>
+					<div class="small">
+						>> <%= link_to project.name, project_path(project) %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

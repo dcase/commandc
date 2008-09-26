@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveRecord::Acts::Category::ClassMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveRecord::Acts::Category::ClassMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/active_record/acts/category_rb.html">
+                lib/active_record/acts/category.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="ClassMethods.html">ClassMethods</a> module #
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000002">acts_as_category</a>&nbsp;&nbsp;
+      <a href="#M000003">hidden</a>&nbsp;&nbsp;
+      <a href="#M000005">hidden=</a>&nbsp;&nbsp;
+      <a href="#M000004">hidden_sql</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">hidden</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an <tt>array</tt> with <tt>ids</tt> of all categories, which are to
+be <a href="ClassMethods.html#M000003">hidden</a>. Returns an empty
+<tt>array</tt> if none. The idea is, to prevent users without given rights
+to see <a href="ClassMethods.html#M000003">hidden</a> categories. This is
+done by defining a class variable <tt><a
+href="ClassMethods.html#M000003">hidden</a></tt> each time the user logs in
+(which is job of the controller, in case you would like to use this
+functionality).
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_record/acts/category.rb, line 88</span>
+88:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden</span>
+89:             <span class="ruby-identifier">class_variable_get</span> <span class="ruby-identifier">:@@hidden</span>
+90:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">hidden=</span><span class="method-args">(ids)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Takes an <tt>array</tt> of <tt>ids</tt> of categories and defines these to
+be <a href="ClassMethods.html#M000003">hidden</a>. Note that it overwrites
+the array with each call, instead of adding further ids to it.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_record/acts/category.rb, line 101</span>
+101:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden=</span>(<span class="ruby-identifier">ids</span>)
+102:             <span class="ruby-identifier">hidden</span> = []
+103:             <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hidden</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+104:             <span class="ruby-identifier">class_variable_set</span> <span class="ruby-identifier">:@@hidden</span>, <span class="ruby-identifier">hidden</span>.<span class="ruby-identifier">uniq</span>
+105:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">hidden_sql</span><span class="method-args">(with_and = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a WHERE clause for SQL statements, which causes <a
+href="ClassMethods.html#M000003">hidden</a> categories not to be included.
+Adds AND if parameter <tt>true</tt> is given.
+</p>
+<pre>
+ hidden_sql       #=&gt; &quot; id NOT IN (3,6,12) &quot;
+ hidden_sql(true) #=&gt; &quot; AND id NOT IN (3,6,12) &quot;
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/active_record/acts/category.rb, line 96</span>
+96:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden_sql</span>(<span class="ruby-identifier">with_and</span> = <span class="ruby-keyword kw">false</span>)
+97:             <span class="ruby-identifier">hidden</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value str">''</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{with_and ? ' AND' : ''} id NOT IN (#{hidden.join(',')}) &quot;</span>
+98:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">acts_as_category</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Needs columns: <tt>ancestors_count</tt>, <tt>descendants_count</tt>,
+<tt>children_count</tt>
+</p>
+<p>
+Please note that parent_id will not be validated on &quot;update&quot; and
+&quot;update_attribute&quot;, so don&#8216;t use either
+</p>
+<p>
+Methods which will respect the <a
+href="ClassMethods.html#M000003">hidden</a> functionality:
+</p>
+<pre>
+ Category.get(id)       as a replacement for find(id)
+          root
+          roots
+
+     self.children
+          children.size
+          children.empty?
+          children_ids
+          descendants
+          descendants_ids
+          siblings
+          self_and_siblings
+</pre>
+<table>
+<tr><td valign="top">Q:</td><td>Why is <b>find</b> not respecting hidden?
+
+</td></tr>
+<tr><td valign="top">A:</td><td>I didn&#8216;t feel comfortable overwriting the find method for Categories
+and it is not really needed.
+
+</td></tr>
+<tr><td valign="top">Q:</td><td>Why are <b>ancestors</b>, <b>ancestors_ids</b> and <b>self.parent</b> not
+respecting hidden?
+
+</td></tr>
+<tr><td valign="top">A:</td><td>Because the whole idea of <a href="ClassMethods.html#M000003">hidden</a> is
+to exclude descendants of an <a href="ClassMethods.html#M000003">hidden</a>
+<a href="../Category.html">Category</a> as well, thus the ancestors will
+never be <a href="ClassMethods.html#M000003">hidden</a>.
+
+</td></tr>
+</table>
+<p>
+Configuration options are:
+</p>
+<ul>
+<li><tt>foreign_key</tt> - specifies the column name to use for tracking of the
+tree (default: <tt>parent_id</tt>)
+
+</li>
+<li><tt>position</tt> - specifies the integer column name to use for ordering
+categories (default: <tt>position</tt>)
+
+</li>
+<li><tt>order</tt> - specifies a column name to use for ordering children and
+root(s) (default: <tt>position</tt>)
+
+</li>
+</ul>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/active_record/acts/category.rb, line 52</span>
+ 52:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">acts_as_category</span>(<span class="ruby-identifier">options</span> = {})
+ 53:     
+ 54:           <span class="ruby-comment cmt"># Load parameters whenever acts_as_category is called</span>
+ 55:           <span class="ruby-identifier">configuration</span> = { <span class="ruby-identifier">:foreign_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;parent_id&quot;</span>, <span class="ruby-identifier">:position</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;position&quot;</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;position&quot;</span>, <span class="ruby-identifier">:children_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'children_count'</span>, <span class="ruby-identifier">:ancestors_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'ancestors_count'</span>, <span class="ruby-identifier">:descendants_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'descendants_count'</span> }
+ 56:           <span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+ 57:           
+ 58:           <span class="ruby-comment cmt"># Create a class association to itself</span>
+ 59:           <span class="ruby-identifier">belongs_to</span> <span class="ruby-identifier">:parent</span>, <span class="ruby-identifier">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">:foreign_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:foreign_key</span>], <span class="ruby-identifier">:counter_cache</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:children_count</span>]
+ 60:           <span class="ruby-identifier">has_many</span> <span class="ruby-identifier">:children</span>, <span class="ruby-identifier">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">:foreign_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:foreign_key</span>], <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:order</span>], <span class="ruby-identifier">:dependent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:destroy</span>
+ 61: 
+ 62:           <span class="ruby-comment cmt"># Substantial validations</span>
+ 63:           <span class="ruby-identifier">before_validation</span> <span class="ruby-identifier">:validate_foreign_key</span>
+ 64:           <span class="ruby-identifier">before_validation_on_create</span> <span class="ruby-identifier">:assign_position</span>
+ 65:           <span class="ruby-identifier">validates_numericality_of</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:foreign_key</span>], <span class="ruby-identifier">:only_integer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:greater_than</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:allow_nil</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Category must exist, and cannot be its own descendant'</span>
+ 66:           <span class="ruby-identifier">validates_numericality_of</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:position</span>],    <span class="ruby-identifier">:only_integer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:greater_than</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+ 67: 
+ 68:           <span class="ruby-comment cmt"># Callbacks for automatic refresh of ancestors_count &amp; descendants_count cache columns</span>
+ 69:           <span class="ruby-identifier">after_create</span> <span class="ruby-identifier">:refresh_cache_after_create</span>
+ 70:           <span class="ruby-identifier">before_update</span> <span class="ruby-identifier">:prepare_refresh_before_update</span>
+ 71:           <span class="ruby-identifier">after_update</span> <span class="ruby-identifier">:refresh_cache_after_update</span>
+ 72:           <span class="ruby-identifier">before_destroy</span> <span class="ruby-identifier">:prepare_refresh_before_destroy</span>
+ 73:           <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:refresh_cache_after_destroy</span>
+ 74: 
+ 75:           <span class="ruby-comment cmt"># Add readonly attribute to cache columns</span>
+ 76:           <span class="ruby-identifier">attr_readonly</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:ancestors_count</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:ancestors_count</span>]
+ 77:           <span class="ruby-identifier">attr_readonly</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:descendants_count</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">configuration</span>[<span class="ruby-identifier">:descendants_count</span>]
+ 78: 
+ 79:           <span class="ruby-comment cmt"># Define class variables</span>
+ 80:           <span class="ruby-identifier">class_variable_set</span> <span class="ruby-identifier">:@@hidden</span>, []
+ 81:           
+ 82:           <span class="ruby-comment cmt">#################</span>
+ 83:           <span class="ruby-comment cmt"># Class methods #</span>
+ 84:           <span class="ruby-comment cmt">#################</span>
+ 85: 
+ 86:           <span class="ruby-comment cmt"># Returns an +array+ with +ids+ of all categories, which are to be hidden. Returns an empty +array+ if none.</span>
+ 87:           <span class="ruby-comment cmt"># The idea is, to prevent users without given rights to see hidden categories. This is done by defining a class variable +hidden+ each time the user logs in (which is job of the controller, in case you would like to use this functionality).</span>
+ 88:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden</span>
+ 89:             <span class="ruby-identifier">class_variable_get</span> <span class="ruby-identifier">:@@hidden</span>
+ 90:           <span class="ruby-keyword kw">end</span>
+ 91:           
+ 92:           <span class="ruby-comment cmt"># Creates a WHERE clause for SQL statements, which causes hidden categories not to be included. Adds AND if parameter +true+ is given.</span>
+ 93:           <span class="ruby-comment cmt">#</span>
+ 94:           <span class="ruby-comment cmt">#  hidden_sql       #=&gt; &quot; id NOT IN (3,6,12) &quot;</span>
+ 95:           <span class="ruby-comment cmt">#  hidden_sql(true) #=&gt; &quot; AND id NOT IN (3,6,12) &quot;</span>
+ 96:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden_sql</span>(<span class="ruby-identifier">with_and</span> = <span class="ruby-keyword kw">false</span>)
+ 97:             <span class="ruby-identifier">hidden</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value str">''</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{with_and ? ' AND' : ''} id NOT IN (#{hidden.join(',')}) &quot;</span>
+ 98:           <span class="ruby-keyword kw">end</span>
+ 99:           
+100:           <span class="ruby-comment cmt"># Takes an +array+ of +ids+ of categories and defines these to be hidden. Note that it overwrites the array with each call, instead of adding further ids to it.</span>
+101:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hidden=</span>(<span class="ruby-identifier">ids</span>)
+102:             <span class="ruby-identifier">hidden</span> = []
+103:             <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hidden</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+104:             <span class="ruby-identifier">class_variable_set</span> <span class="ruby-identifier">:@@hidden</span>, <span class="ruby-identifier">hidden</span>.<span class="ruby-identifier">uniq</span>
+105:           <span class="ruby-keyword kw">end</span>
+106:           
+107:           <span class="ruby-comment cmt"># This class_eval contains methods which cannot be added wihtout having a concrete model.</span>
+108:           <span class="ruby-comment cmt"># Say, we want these methods to use parameters like &quot;configuration[:foreign_key]&quot;, but we</span>
+109:           <span class="ruby-comment cmt"># don't have these parameters, unless somebody evokes the acts_as_category method in his</span>
+110:           <span class="ruby-comment cmt"># model. So we use class_eval, which generates methods, when acts_as_category is called,</span>
+111:           <span class="ruby-comment cmt"># and not already when our plugin's init.rb adds our Acts::Category modules to ActiveRecord.</span>
+112:           <span class="ruby-comment cmt"># Another example is, that we want to overwrite the association method &quot;children&quot;, but this</span>
+113:           <span class="ruby-comment cmt"># association doesn't exist before acts_as_category is actually called. So we need class_eval.</span>
+114: 
+115:           <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;\n##############################\n# Generated instance methods #\n##############################\n\n# Include instance methods from our InstanceMethods module\ninclude ActiveRecord::Acts::Category::InstanceMethods\n\n# Define instance getter and setter methods to keep track of the column name options\ndef parent_id_column() '\#{configuration[:foreign_key]}' end\ndef parent_id_column=(id) write_attribute('\#{configuration[:foreign_key]}', id) end\ndef position_column() '\#{configuration[:position]}' end\ndef position_column=(pos) write_attribute('\#{configuration[:position]}', pos) end\ndef children_count_column() '\#{configuration[:children_count]}' end\ndef ancestors_count_column() '\#{configuration[:ancestors_count]}' end\ndef descendants_count_column() '\#{configuration[:descendants_count]}' end\n\n# Overwrite the children association method, so it will respect hidden categories\nalias :orig_children :children\ndef children\nresult = orig_children\nresult.delete_if { |child| child.hidden? }\nresult\nend\n\n###########################\n# Generated class methods #\n###########################\n\n# Update cache columns of a whole branch, which includes the given +category+ or its +id+.\ndef self.refresh_cache_of_branch_with(category)\ncategory = find(category) unless category.instance_of?(self)   # possibly convert id into category\nroot = category.\#{configuration[:foreign_key]}.nil? ? category : category.root   # find root of category (if not already)\nroot.refresh_cache\nroot.descendants.each { |d| d.refresh_cache }\nend\n\n# Returns the +category+ to a given +id+. This is as a replacement for find(id), but it respects hidden categories.\ndef self.get(id)\nfind(:first, :conditions =&gt; 'id = ' + id.to_i.to_s + hidden_sql(true), :order =&gt; \#{configuration[:order].nil? ? 'nil' : %Q{\&quot;\#{configuration[:order]}\&quot;}})\nend\n\n# Returns all root +categories+\ndef self.roots\nfind(:all, :conditions =&gt; '\#{configuration[:foreign_key]} IS NULL' + hidden_sql(true), :order =&gt; \#{configuration[:order].nil? ? 'nil' : %Q{\&quot;\#{configuration[:order]}\&quot;}})\nend\n\n# Receives the controller's +params+ variable and updates category positions accordingly. Please refer to the helper methods that came with this model for further information.\ndef self.update_positions(params)\nparams.each_key { |key|\nif key.include?('sortable_categories_')\nparent_id = key.split('_').last.to_i\nparams[key].each_with_index { |id, position|\ncategory = find(id)\n# Verify that every category is valid and from the correct parent\nraise ArgumentError, 'Invalid attempt to update a category position: Cannot update a category (ID '+category.id.to_s+') out of given parent_id (ID '+parent_id.to_s+')' unless category.\#{configuration[:foreign_key]}.nil? &amp;&amp; parent_id == 0 || parent_id &gt; 0 &amp;&amp; category.\#{configuration[:foreign_key]} == parent_id\n@counter = position + 1\n}\nself_and_siblings_count = parent_id &lt;= 0 ? roots.size : find(parent_id).children.count\n# Verify that the parameters correspond to every child of this parent\nraise ArgumentError, 'Invalid attempt to update a category position: Number of category IDs in param hash is wrong ('+@counter.to_s+' instead of '+self_and_siblings_count.to_s+' for parent with ID '+parent_id.to_s+')' unless @counter == self_and_siblings_count\n# Do the actual position update\nparams[key].each_with_index { |id, position| find(id).update_attribute('\#{configuration[:position]}', position + 1)}\nend\n}\nrescue ActiveRecord::RecordNotFound\nraise ArgumentError, 'Invalid attempt to update a category position: Parent category does not exist'\nend\n\n&quot;</span>
+116:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

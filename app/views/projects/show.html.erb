@@ -1,0 +1,6 @@
+<% # Begin Config section %>
+<% content_for :title do %>COMMAND C > Our Work > <%=h @project.name %><% end %>
+<% content_for :bodyclass do %>portfolio<% end %>
+<% # End Config section %>
+
+<%= image_tag @project.imagefile.public_filename %>

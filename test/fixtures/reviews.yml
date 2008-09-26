@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reviewer: MyString
+  content: MyText
+  client: 
+  position: 1
+
+two:
+  reviewer: MyString
+  content: MyText
+  client: 
+  position: 1

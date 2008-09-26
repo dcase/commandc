@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @inquiry.name %>
+</p>
+
+<p>
+  <b>Timeframe:</b>
+  <%=h @inquiry.timeframe %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @inquiry.email %>
+</p>
+
+<p>
+  <b>Budget:</b>
+  <%=h @inquiry.budget %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @inquiry.phone %>
+</p>
+
+<p>
+  <b>Reachable at:</b>
+  <%=h @inquiry.reachable_at %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @inquiry.url %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%=h @inquiry.source %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @inquiry.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
+<%= link_to 'Back', inquiries_path %>

@@ -1,0 +1,30 @@
+<h1>New project</h1>
+
+<% form_for(@project, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <% fields_for :imagefile do |a| %>
+  <p>
+    <%= a.label 'Thumbnail' %><br />
+    <%= a.file_field :uploaded_data %>
+  </p>
+  <% end %>
+  <p>
+    <%= f.label :categories %><br />
+    <!--<%= f.collection_select(:categories, Category.find_all_by_parent_id(1), :id, :name) %>-->
+	<%= select_tag "categories[]", option_groups_from_collection_for_select(Category.find(1,2), :children, :name, :id, :name), :multiple => true %>
+  </p>
+  <p>
+    <%= f.label :is_recent %><br />
+    <%= f.check_box :is_recent %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', projects_path %>

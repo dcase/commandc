@@ -1,0 +1,5 @@
+<div class="modal">
+	<%= yield %>
+	<%= image_tag 'big-rabbit.png', :size => "173x484", :alt => "big rabbit", :id => "big-rabbit" %>
+	<%= link_to_hide_overlay 'close X', clients_path %>
+</div>

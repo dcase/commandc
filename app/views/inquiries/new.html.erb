@@ -1,0 +1,55 @@
+<% # Begin Config section %>
+<% content_for :title do %>COMMAND C > Contact Us<% end %>
+<% content_for :bodyclass do %>contact<% end %>
+<% # End Config section %>
+
+<h1 class="bold large">inquiry/get a quote</h1>
+<div class="small line-below">please fill out your information in the form below to request a quote</div>
+
+<% remote_form_for(@inquiry) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p class="right-col">
+    <%= f.label :timeframe %><br />
+    <%= f.text_field :timeframe %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p class="right-col">
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p class="right-col">
+    <%= f.label :reachable_at %><br />
+    <%= f.text_field :reachable_at %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p class="right-col">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </p>
+  <div>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 58, :rows => 5 %>
+  </div>
+  <div id="contact-submit">
+    <%= f.submit "submit" %>
+  </div>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "common/portfoliolink" %>
+<% end %>

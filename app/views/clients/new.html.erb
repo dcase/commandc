@@ -1,0 +1,27 @@
+<h1>New client</h1>
+
+<% form_for(@client, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :is_featured %><br />
+    <%= f.check_box :is_featured %>
+  </p>
+  <% fields_for :imagefile do |a| %>
+  <p>
+    <%= a.label 'Logo' %><br />
+    <%= a.file_field :uploaded_data %>
+  </p>
+  <% end %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

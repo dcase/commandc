@@ -1,0 +1,15 @@
+<% # Begin Config section %>
+<% content_for :title do %>COMMAND C > Our Clients<% end %>
+<% content_for :bodyclass do %>clients<% end %>
+<% # End Config section %>
+
+<% for client in @featured_clients %>
+	<% div_for(client) do %>
+		<div><%= image_tag(client.imagefile.public_filename(:client_logo)) %></div>
+		<div class="small">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
+		<% if authorized? %>
+			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
+			<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+		<% end %>
+	<% end %>
+<% end %>

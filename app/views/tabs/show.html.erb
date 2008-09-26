@@ -1,0 +1,28 @@
+<p>
+  <b>Title:</b>
+  <%=h @tab.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @tab.content %>
+</p>
+
+<p>
+  <b>Imagefile:</b>
+  <%=h @tab.imagefile %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @tab.project %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%=h @tab.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_tab_path(@tab) %> |
+<%= link_to 'Back', tabs_path %>

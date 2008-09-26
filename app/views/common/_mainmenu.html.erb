@@ -1,0 +1,55 @@
+<ul class="mainmenu">
+	<li><%= link_to_active_if "who we are", :controller => "static", :action => "about" %>
+	<%
+	if current_page?(clients_path) || current_page?(reviews_path)
+		client_menu_class = "current"
+	else
+		client_menu_class = "notcurrent"
+	end
+	%>
+	<li><%= link_to_function "some clients", visual_effect(:toggle_blind, "clients-menu"), :class => client_menu_class %>
+		<ul id="clients-menu" class="submenu" <% unless current_page?(clients_path) || current_page?(reviews_path) %>style="display: none;"<% end %>>
+			<li><%= link_to_active_if "client list", clients_path %></li>
+			<li><%= link_to_active_if "what they say", reviews_path %></li>
+		</ul>
+	</li>
+	<li><a href="http://commandc.com/blog1" target="_blank">our blog</a></li>
+	<li><a href="http://shop.commandc.com/" target="_blank">our shop</a></li>
+	<li><%= link_to_active_if 'contact us', new_inquiry_path %></li>
+	<li><%= link_to_function "our work", visual_effect(:toggle_blind, "portfolio-menu") %>
+		<ul id="portfolio-menu" class="submenu" style="display: none;">
+			<li><%= link_to_function "by service" do |page| 
+					page.visual_effect(:toggle_blind, "portfolio-service-menu")
+					page.hide("portfolio-industry-menu")
+				end %>
+			</li>
+			<li><%= link_to_function "by industry" do |page| 
+					page.visual_effect(:toggle_blind, "portfolio-industry-menu")
+					page.hide("portfolio-service-menu")
+				end %>
+			</li>
+			<li>
+				<ul class="subsubmenu" id="portfolio-service-menu" style="display: none;">
+					<% services = Category.find(1, {:order => "position"}) %>
+					<% services.children.each do |child| %>
+						<li><%= link_to_function child.name do |page|
+								page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
+								page.visual_effect(:toggle_blind, "project-list#{child.id}")
+							end %>
+						<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %></li>
+					<% end %>
+				</ul>
+				<ul class="subsubmenu" id="portfolio-industry-menu" style="display: none;">
+					<% industries = Category.find(2) %>
+					<% industries.children.each do |child| %>
+						<li><%= link_to_function child.name do |page|
+								page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
+								page.visual_effect(:toggle_blind, "project-list#{child.id}") 
+							end %>
+						<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %></li>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
