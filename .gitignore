@@ -1,5 +1,4 @@
 .DS_Store
 log/*.log
 tmp/**/*
-config/databse.yml
 db/*.sqlite3
