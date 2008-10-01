@@ -3,6 +3,7 @@ module StaticHelper
     require 'rss'
     require 'open-uri'
     
+    begin
     feed = RSS::Parser.parse( 'http://commandc.com/blog1/wp-rss.php' )
     
     output = "<div id=\"blog_posts\">"
@@ -11,6 +12,9 @@ module StaticHelper
     output += image_tag('blog-separator-2.gif', :size => "74x60")
     output += "<div class=\"blog-post\">>> " + link_to(feed.items[1].description[0,100] + "...",{},:href => feed.items[1].link, :target => "_blank" ) + "</div>"
     output += "</div>"
+    rescue OpenURI::HTTPError => e
+      output = ""
+    end
     
     output
     
