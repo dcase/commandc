@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
   acts_as_category
-  has_and_belongs_to_many :projects
+  has_many :portfolio_menu_items, :order => "position"
+  has_many :projects, :through => :portfolio_menu_items
+    
 end

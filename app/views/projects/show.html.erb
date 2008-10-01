@@ -1,6 +1,72 @@
 <% # Begin Config section %>
 <% content_for :title do %>COMMAND C > Our Work > <%=h @project.name %><% end %>
 <% content_for :bodyclass do %>portfolio<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag 'accordion' %>
+<% end %>
 <% # End Config section %>
 
-<%= image_tag @project.imagefile.public_filename %>
+<% if @project.tabs.empty? %>
+	<p class="lightgray bold huge">add tabs</p>
+<% else %>
+	<div id="tab_image">
+		<%= image_tag @project.tabs.first.imagefile.public_filename %>
+	</div>
+	<div id="tab_image_links">
+		<% @project.tabs.each_with_index do |tab, i| %>
+			<% if i==0 then link_class = "active" else link_class = "inactive" end %>
+			<%= link_to_function i+1, :id => "link#{i+1}", :class => link_class do |page|
+			 	page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
+				page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
+				page["link#{i+1}"].addClassName('active')
+			end unless @project.tabs.count < 2 %>
+		<%end %>
+	</div>
+<% end %>
+
+<% content_for :sidebar do %>
+	<% if authorized? %>
+		<div>
+		<%= image_tag("pencil.png", :size => "16x16")%>
+		<%= link_to("edit portfolio item", edit_project_path(@project) )%><br />
+		<%= image_tag("add.png", :size => "16x16") %>
+		<%= link_to("add new tab", new_tab_path(:project_id => @project.id)) %>
+		</div>
+	<% end %>
+	<% unless @project.tabs.empty? %>
+		<div id="tab_list">
+			<% @project.tabs.each_with_index do |tab,i| %>
+				<%= render :partial => "tab", :locals => { :tab => tab, :i => i } %>
+			<% end %>
+		</div>
+		<% if authorized? %>
+			<%= sortable_element :tab_list, :url => { :controller=> "tabs", :action => "order"}, :handle => "drag_handle", :tag => "div"  %>
+		<% else %>
+			<script type="text/javascript">
+			<!--
+			Event.observe(window, 'load', loadAccordions, false);
+
+			var verticalAccordions = $$('.accordion_toggle');
+				verticalAccordions.each(function(accordion) {
+				    $(accordion.next(0)).setStyle({
+				        height: '0px'
+				    });
+				});
+
+			function loadAccordions() {
+
+				var tabs = new accordion('tab_list', {
+					defaultSize : {
+					    width : 'auto',
+						height : 250
+					}
+				});
+
+				// Open first one
+				tabs.activate($$('#tab_list .accordion_toggle')[0]);
+			}
+			//-->
+			</script>
+		<% end %>
+	<% end %>
+<% end %>

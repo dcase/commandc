@@ -16,40 +16,63 @@
 	<li><a href="http://commandc.com/blog1" target="_blank">our blog</a></li>
 	<li><a href="http://shop.commandc.com/" target="_blank">our shop</a></li>
 	<li><%= link_to_active_if 'contact us', new_inquiry_path %></li>
-	<li><%= link_to_function "our work", visual_effect(:toggle_blind, "portfolio-menu") %>
-		<ul id="portfolio-menu" class="submenu" style="display: none;">
-			<li><%= link_to_function "by service" do |page| 
-					page.visual_effect(:toggle_blind, "portfolio-service-menu")
-					page.hide("portfolio-industry-menu")
-				end %>
-			</li>
-			<li><%= link_to_function "by industry" do |page| 
-					page.visual_effect(:toggle_blind, "portfolio-industry-menu")
-					page.hide("portfolio-service-menu")
-				end %>
-			</li>
-			<li>
-				<ul class="subsubmenu" id="portfolio-service-menu" style="display: none;">
-					<% services = Category.find(1, {:order => "position"}) %>
-					<% services.children.each do |child| %>
-						<li><%= link_to_function child.name do |page|
-								page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
-								page.visual_effect(:toggle_blind, "project-list#{child.id}")
-							end %>
-						<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %></li>
-					<% end %>
-				</ul>
-				<ul class="subsubmenu" id="portfolio-industry-menu" style="display: none;">
-					<% industries = Category.find(2) %>
-					<% industries.children.each do |child| %>
-						<li><%= link_to_function child.name do |page|
-								page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
-								page.visual_effect(:toggle_blind, "project-list#{child.id}") 
-							end %>
-						<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %></li>
-					<% end %>
-				</ul>
-			</li>
-		</ul>
-	</li>
+	<%
+	if current_page? :controller => "projects", :action => "show"
+		project_menu_class = "current"
+	else
+		project_menu_class = "notcurrent"
+	end
+	%>
+	<% if current_page? :controller => "projects", :action => "show" %>
+		<li><%= link_to_function "our work", visual_effect(:toggle_blind, "portfolio-menu"), :class => project_menu_class %>
+			<ul id="portfolio-menu" class="submenu" style="display: none;">
+				<li><%= link_to_function "by service" do |page| 
+						page.visual_effect(:toggle_blind, "portfolio-service-menu")
+						page.hide("portfolio-industry-menu")
+					end %>
+				</li>
+				<li><%= link_to_function "by industry" do |page| 
+						page.visual_effect(:toggle_blind, "portfolio-industry-menu")
+						page.hide("portfolio-service-menu")
+					end %>
+				</li>
+				<li>
+					<ul class="subsubmenu" id="portfolio-service-menu" style="display: none;">
+						<% services = Category.find(1, {:order => "position"}) %>
+						<% services.children.each do |child| %>
+							<li>
+								<% unless child.projects.empty? %>
+									<%= link_to_function child.name do |page|
+											page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
+											page.visual_effect(:toggle_blind, "project_list#{child.id}")
+										end %>
+									<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
+								<% else %>
+									<%= link_to child.name, {}, {:href => "#"} %>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+					<ul class="subsubmenu" id="portfolio-industry-menu" style="display: none;">
+						<% industries = Category.find(2) %>
+						<% industries.children.each do |child| %>
+							<li>
+								<% unless child.projects.empty? %>
+									<%= link_to_function child.name do |page|
+											page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
+											page.visual_effect(:toggle_blind, "project_list#{child.id}") 
+										end %>
+									<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
+								<% else %>
+									<%= link_to child.name, {}, {:href => "#"} %>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	<% else %>
+		<li><%= link_to "our work", project_path(Category.roots.first.children.first.projects.first) %></li>
+	<% end %>
 </ul>

@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
     request.xhr? ? "modal" : "application"
   end
   
+  def permission
+    unless authorized?
+      flash[:notice] = "You don't look like an admin to me"
+      redirect_to(home_path)
+    end
+  end
+  
 end

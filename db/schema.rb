@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080925191814) do
+ActiveRecord::Schema.define(:version => 20080930182300) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(:version => 20080925191814) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_projects", :id => false, :force => true do |t|
-    t.integer "category_id", :null => false
-    t.integer "project_id",  :null => false
-  end
-
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.string   "url"
@@ -35,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20080925191814) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_featured"
+    t.integer  "position"
   end
 
   create_table "imagefiles", :force => true do |t|
@@ -59,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20080925191814) do
     t.string   "url"
     t.string   "source"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "portfolio_menu_items", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "project_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

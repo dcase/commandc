@@ -19,7 +19,6 @@ module ApplicationHelper
     old_opts = opts.dup
 
     link_to( link_title, link_path, opts.merge( {:class => classes} ) )
-
   end
-  
+   
 end

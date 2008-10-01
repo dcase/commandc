@@ -1,6 +1,6 @@
 module ActsAsCategoryHelper
   
-  def sortable_categories(model, ajaxurl = {:controller => :category, :action => :update_positions}, column = 'name')
+  def sortable_categories(model, ajaxurl = {:controller => :categories, :action => :update_positions}, column = 'name')
     raise "Model '#{model.to_s}' does not acts_as_category" unless model.respond_to?(:acts_as_category)
     result = '<div id="sortable_category_response" "></div>'
     model.roots.each { |root| result += sortable_category_list(root, ajaxurl, column) }
@@ -29,6 +29,10 @@ module ActsAsCategoryHelper
     result = ''
     result += "<ul id=\"sortable_categories_#{parent_id}\">\n" if firstitem
     result += "<li id=\"category_#{category.id}\">#{category.read_attribute(column)}"
+    if authorized?
+			result += link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_category_path(category), {:title => "Edit"})
+			result += link_to( image_tag("fail.png", :size => "16x16"), category, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"})
+		end
     result += category.children.empty? ? "</li>\n" : "\n"
     category.children.each {|child| result += sortable_category_list(child, ajaxurl, column = 'name') } unless category.children.empty?
     result += "</ul></li>\n" + sortable_element("sortable_categories_#{parent_id}", :update => 'sortable_category_response', :url => ajaxurl) if lastitem

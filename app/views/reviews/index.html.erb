@@ -1,26 +1,65 @@
-<h1>Listing reviews</h1>
-
-<table>
-  <tr>
-    <th>Reviewer</th>
-    <th>Content</th>
-    <th>Client</th>
-    <th>Position</th>
-  </tr>
-
-<% for review in @reviews %>
-  <tr>
-    <td><%=h review.reviewer %></td>
-    <td><%=h review.content %></td>
-    <td><%=h review.client %></td>
-    <td><%=h review.position %></td>
-    <td><%= link_to 'Show', review %></td>
-    <td><%= link_to 'Edit', edit_review_path(review) %></td>
-    <td><%= link_to 'Destroy', review, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% # Begin Config section %>
+<% content_for :title do %>COMMAND C > What Our Clients Say<% end %>
+<% content_for :bodyclass do %>reviews<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag 'accordion' %>
+	<%= javascript_include_tag 'class-scroll' %>
 <% end %>
-</table>
+<% # End Config section %>
 
-<br />
+<div id="reviews_accordion">
+	<% for review in @reviews %>
+		<% div_for review do %>
+			<div class="accordion_toggle">
+				<span class="large blue bold upper"><%= review.client.name %></span>
+				<span class="large lightgray bold"><%= review.reviewer %></span>
+				<% if authorized? %>
+					<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_review_path(review), {:title => "Edit"}) %>
+					<%= link_to( image_tag("fail.png", :size => "16x16"), review, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+					<%= image_tag("drag_handle.png", :size => "16x16", :class => "drag_handle") %>
+				<% end %>
+			</div>
+			<div class="accordion_content">
+				<div><%= simple_format review.content %></div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<div id="scroll_buttons">
+	<%= image_tag 'arrow-up.png', :id => "scroll_up", :size => "14x12", :alt => "Scroll Up" %>
+	<%= image_tag 'arrow-down.png', :id => "scroll_	down", :size => "14x12", :alt => "Scroll Up" %>
+</div>
+<% if authorized? %>
+	<%= sortable_element :reviews_accordion, :url => { :action => "order"}, :handle => "drag_handle", :tag => "div"  %>
+<% end %>
+<script type="text/javascript">
+<!--
+Event.observe(window, 'load', loadAccordions, false);
 
-<%= link_to 'New review', new_review_path %>
+var verticalAccordions = $$('.accordion_toggle');
+	verticalAccordions.each(function(accordion) {
+	    $(accordion.next(0)).setStyle({
+	        height: '0px'
+	    });
+	});
+	
+function loadAccordions() {
+	
+	var reviews = new accordion('reviews_accordion', {
+		defaultSize : {
+		    width : 450
+		}
+	});
+
+	// Open first one
+	reviews.activate($$('#reviews_accordion .accordion_toggle')[0]);
+}
+
+var scroll1 = new TextScroll('scroll1','reviews_accordion','scroll_up','scroll_down');
+//-->
+</script>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "common/portfoliolink" %>
+<% end %>
+

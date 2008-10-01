@@ -1,0 +1,15 @@
+<% div_for(tab) do %>
+	<div class="tab-heading accordion_toggle">
+		<%= link_to_function tab.title do |page|
+		 	page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
+			page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
+			page["link#{i+1}"].addClassName('active')
+		end %>
+		<% if authorized? %>
+			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_tab_path(tab), {:title => "Edit"}) %>
+			<%= link_to( image_tag("fail.png", :size => "16x16"), tab, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+			<%= image_tag("drag_handle.png", :size => "16x16", :class => "drag_handle") %>
+		<% end %>
+	</div>
+	<div class="tab-copy accordion_content"><div><%= simple_format(tab.content) %></div></div>
+<% end %>

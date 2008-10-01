@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
   layout :http_or_xhr
+  before_filter :permission, :except => :index
   
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.find(:all)
+    @reviews = Review.find(:all, :order => "position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +48,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         flash[:notice] = 'Review was successfully created.'
-        format.html { redirect_to(@review) }
+        format.html { redirect_to(reviews_url) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
       else
         format.html { render :action => "new" }
@@ -64,7 +65,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update_attributes(params[:review])
         flash[:notice] = 'Review was successfully updated.'
-        format.html { redirect_to(@review) }
+        format.html { redirect_to(reviews_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,4 +85,15 @@ class ReviewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def order
+     params[:reviews_accordion].each_with_index do |id, position|
+       Review.update(id, {:position => position+1})
+     end
+     render :text => params.inspect
+   end
+
+   def inspect_params
+    render :text => params.inspect
+   end
 end

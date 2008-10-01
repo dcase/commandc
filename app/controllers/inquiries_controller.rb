@@ -1,4 +1,6 @@
 class InquiriesController < ApplicationController
+  before_filter :permission, :except => [:new,:create]
+  
   # GET /inquiries
   # GET /inquiries.xml
   def index

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   layout :http_or_xhr
+  before_filter :permission, :except => [:list_by_category,:show]
   
   # GET /projects
   # GET /projects.xml
@@ -72,7 +73,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
-    if params[:imagefile][:uploaded_date] != ""
+    unless params[:imagefile][:uploaded_data].empty?
       @project.imagefile.destroy
       @project.create_imagefile(params[:imagefile])
     end

@@ -9,20 +9,13 @@
   </p>
   <p>
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :rows => 8 %>
   </p>
   <p>
     <%= f.label :client %><br />
-    <%= f.text_field :client %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
+    <%= f.collection_select :client_id, Client.find(:all), :id, :name %>
   </p>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', reviews_path %>

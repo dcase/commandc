@@ -1,5 +1,6 @@
 class TabsController < ApplicationController
   layout :http_or_xhr
+  before_filter :permission
   
   # GET /tabs
   # GET /tabs.xml
@@ -27,6 +28,9 @@ class TabsController < ApplicationController
   # GET /tabs/new.xml
   def new
     @tab = Tab.new
+    @imagefile = Imagefile.new
+    @tab.project_id = params[:project_id]
+    @project = Project.find(params[:project_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,11 +47,12 @@ class TabsController < ApplicationController
   # POST /tabs.xml
   def create
     @tab = Tab.new(params[:tab])
+    @tab.create_imagefile(params[:imagefile])
 
     respond_to do |format|
       if @tab.save
         flash[:notice] = 'Tab was successfully created.'
-        format.html { redirect_to(@tab) }
+        format.html { redirect_to(project_path(Project.find(params[:tab][:project_id]))) }
         format.xml  { render :xml => @tab, :status => :created, :location => @tab }
       else
         format.html { render :action => "new" }
@@ -60,11 +65,15 @@ class TabsController < ApplicationController
   # PUT /tabs/1.xml
   def update
     @tab = Tab.find(params[:id])
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+      @tab.imagefile.destroy
+      @tab.create_imagefile(params[:imagefile])
+    end
 
     respond_to do |format|
       if @tab.update_attributes(params[:tab])
         flash[:notice] = 'Tab was successfully updated.'
-        format.html { redirect_to(@tab) }
+        format.html { redirect_to(project_path(Project.find(params[:tab][:project_id]))) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,4 +93,15 @@ class TabsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def order
+     params[:tab_list].each_with_index do |id, position|
+       Tab.update(id, {:position => position+1})
+     end
+     render :text => params.inspect
+   end
+
+   def inspect_params
+    render :text => params.inspect
+   end
 end

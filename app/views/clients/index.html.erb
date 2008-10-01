@@ -5,11 +5,33 @@
 
 <% for client in @featured_clients %>
 	<% div_for(client) do %>
-		<div><%= image_tag(client.imagefile.public_filename(:client_logo)) %></div>
+		<div><%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url %></div>
 		<div class="small">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
 			<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
 		<% end %>
 	<% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "common/portfoliolink" %>
+	<div class="sidebar-list-heading">more...</div>
+	<div id="scroll">
+		<ul class="sidebar-list" id="client_list">
+		<% for client in @clients %>
+			<% content_tag_for :li, client do %>
+				<% if authorized? %>
+					<%= image_tag("drag_handle.png", :size => "16x16", :class => "drag_handle") %>
+					<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
+					<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+				<% end %>
+				<%= link_to client.name, client.url %>
+			<% end %>
+		<% end %>
+		</ul>
+		<% if authorized? %>
+			<%= sortable_element :client_list, :url => { :action => "order" }, :handle => "drag_handle" %>
+		<% end %>
+	</div>
 <% end %>

@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+  
   map.resources :users
 
   map.resource :session
@@ -16,6 +17,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reviews
 
   map.resources :clients
+  
+  map.resources :categories, :collection => { :edit_all => :get }
+  
+  map.resources :portfolio_menu_items
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
 

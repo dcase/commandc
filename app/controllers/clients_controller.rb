@@ -1,11 +1,12 @@
 class ClientsController < ApplicationController
   layout :http_or_xhr
+  before_filter :permission, :except => :index
   
   # GET /clients
   # GET /clients.xml
   def index
     @featured_clients = Client.find_all_by_is_featured(true)
-    @clients = Client.find_all_by_is_featured(false)
+    @clients = Client.find(:all, :order => "position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,7 +64,7 @@ class ClientsController < ApplicationController
   # PUT /clients/1.xml
   def update
     @client = Client.find(params[:id])
-    if params[:imagefile][:uploaded_data] != ""
+    unless params[:imagefile][:uploaded_data].empty?
       @client.imagefile.destroy
       @client.create_imagefile(params[:imagefile])
     end
@@ -91,5 +92,16 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def order
+     params[:client_list].each_with_index do |id, position|
+       Client.update(id, {:position => position+1})
+     end
+     render :text => params.inspect
+   end
+
+   def inspect_params
+    render :text => params.inspect
+   end
 
 end

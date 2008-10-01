@@ -1,6 +1,6 @@
 <h1>Editing tab</h1>
 
-<% form_for(@tab) do |f| %>
+<% form_for(@tab, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -9,24 +9,21 @@
   </p>
   <p>
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :rows => 8 %>
   </p>
+  <% if @tab.imagefile %>
+    <%= image_tag(@tab.imagefile.public_filename(:client_logo)) %>
+  <% end %>
+
+    <% fields_for :imagefile do |a| %>
+      <p>
+        <%= a.label 'Image' %><br />
+        <%= a.file_field :uploaded_data %>
+      </p>
+
+    <% end %>
   <p>
-    <%= f.label :imagefile %><br />
-    <%= f.text_field :imagefile %>
-  </p>
-  <p>
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
+	<%= f.hidden_field :project_id %>
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @tab %> |
-<%= link_to 'Back', tabs_path %>

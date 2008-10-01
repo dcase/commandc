@@ -8,6 +8,7 @@
 	<%= stylesheet_link_tag 'screen' %>
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag 'modal-overlay' %>
+	<%= yield :javascripts %>
 	
 </head>
 
@@ -24,25 +25,43 @@
 			</div><!-- end DIV 'menu' -->
 			<div id="sidebar"><%= yield :sidebar %></div><!-- end DIV 'sidebar' -->
 			<div id="content">
+				<% if flash[:notice] -%>
+					<div id="notice"><%= flash[:notice] %></div>
+				<% end -%>
 				<%= yield  %>
 			</div><!-- end DIV 'content' -->
 		</div><!-- end DIV 'main' -->
 		<div id="footer">
 			<%= render :partial => "common/footer" %>
-			<%= render :partial => "common/clientlogin" %>
 		</div><!-- end DIV 'footer' -->
 	</div><!-- end DIV 'container' -->
 	<div id="copyright"></div><!-- end DIV 'copyright' -->
 	<% if authorized? %>
 	<div id="admin-controls">
+		<div>
 		<%= image_tag("fail.png", :size => "16x16") %>
 		<%= link_to( "logout", session_path, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
+		</div>
+		<div>
 		<%= image_tag("add.png", :size => "16x16") %>
 		<%= link_to_show_overlay("add new client", new_client_path) %>
+		</div>
+		<div>
 		<%= image_tag("add.png", :size => "16x16") %>
-		<%= link_to("add new review", new_review_path) %>
+		<%= link_to_show_overlay("add new review", new_review_path) %>
+		</div>
+		<div>
 		<%= image_tag("add.png", :size => "16x16") %>
 		<%= link_to("add to portfolio", new_project_path) %>
+		</div>
+		<div>
+		<%= image_tag("add.png", :size => "16x16") %>
+		<%= link_to_show_overlay("add new category", new_category_path) %>
+		</div>
+		<div>
+		<%= image_tag("pencil.png", :size => "16x16")%>
+		<%= link_to("edit portfolio menu", { :controller => "categories", :action => "edit_all"} )%>
+		</div>
 	</div>
 	<%= draggable_element "admin-controls" %>
 	<% end %>

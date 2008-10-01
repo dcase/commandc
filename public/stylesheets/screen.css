@@ -64,6 +64,7 @@ div#footer {
 }
 div#admin-controls {
 	position: fixed;
+	width: 33%;
 	top: 5px;
 	right: 5px;
 	background: #fff;
@@ -73,6 +74,10 @@ div#admin-controls {
 }
 div#admin-controls img {
 	vertical-align: bottom;
+}
+div#admin-controls div {
+	float: left;
+	padding: 5px;
 }
 
 /***************
@@ -134,6 +139,7 @@ a.modal-overlay-hide:active {
 }
 img {
 	border: 0;
+	vertical-align: middle;
 }
 p {
 	margin: 15px 0;
@@ -151,6 +157,21 @@ h1,h2,h3 {
 	margin: 0;
 	font-size: 12px;
 	font-weight: normal;
+}
+.nodisplay {
+	display: none;
+}
+optgroup option {
+	margin-left: 10px;
+}
+#sortable_categories_0 {
+	list-style: none;
+	font-weight: bold;
+}
+#sortable_categories_0 ul {
+	margin: 0 0 15px 15px;
+	font-weight: normal;
+	list-style: none;
 }
 
 /***************
@@ -189,6 +210,9 @@ h1,h2,h3 {
 .large {
 	font-size: 16px;
 }
+.huge {
+	font-size: 84px;
+}
 .nowrap {
 	white-space: nowrap;
 }
@@ -221,6 +245,9 @@ h1,h2,h3 {
 }
 .blue {
 	color: #8cc5d2;
+}
+.lightgray {
+	color: #ccc;
 }
 
 /***************
@@ -474,10 +501,81 @@ img#about-rabbit {
 /***************
 * Clients
 ****************/
+.clients div#content {
+	padding-top: 60px;
+}
 div.client {
 	float: left;
 	padding: 5px;
 } 
+.sidebar-list-heading {
+	font-size: 14px;
+	font-weight: bold;
+	color: #ff0000;
+	margin: 45px 0 7px 0;
+}
+.sidebar-list li {
+	list-style: none;
+	font-size: 11px;
+}
+
+/***************
+* Reviews
+****************/
+div.review {
+	background: #fff;
+}
+
+/***************
+* Projects
+****************/
+div#reviews_accordion {
+	overflow: auto;
+	height: 325px;
+	position: relative;
+}
+div#scroll_buttons {
+	position: absolute;
+	top: 350px;
+	left: 175px;
+	width: 15px;
+}
+div#scroll_buttons img {
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+div#tab_list {
+	margin-top: 60px;
+}
+div#tab_list .accordion_toggle a {
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #8cc3d2;
+}
+div#tab_list .accordion_toggle_active a {
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #ff0000;
+}
+.tab-copy {
+	color: #333;
+}
+div#tab_image_links {
+	text-align: right;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 10px;
+}
+div#tab_image_links a {
+	color: #8cc3d2;
+	text-decoration: none;
+}
+div#tab_image_links a.active {
+	color: #ff0000;
+	text-decoration: none;
+}
 
 /***************
 * Contact Us
@@ -509,4 +607,21 @@ div.client {
 	background: #8bc3d2;
 	color: #fff;
 	padding: 1px 5px;
+}
+
+/***************
+* Blog posts
+****************/
+
+#blog_posts img {
+	float: left;
+}
+.blog-post {
+	float: left;
+	width: 130px;
+	font-size: 10px;
+}
+#client_login {
+	float: left;
+	width: 225px;
 }

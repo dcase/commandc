@@ -1,4 +1,9 @@
+<%= render :partial => "common/clientlogin" %>
+
+<%= get_blog_posts %>
+
 <%= image_tag 'contact-us-button.png', :size => "78x25", :id => "contact-us-button" %>
+
 <% unless current_page?( :controller => "static", :action => "about") %>
 	<%= link_to_unless_current image_tag('contact-us-rabbit.png', :size => "45x125", :id => "contact-us-rabbit"), new_inquiry_path %>
 <% end %>
