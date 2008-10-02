@@ -1,6 +1,6 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
-  before_filter :permission, :except => :new
+  before_filter :permission, :except => [:new, :create]
 
   # render new.rhtml
   def new

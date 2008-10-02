@@ -1,10 +1,10 @@
 module StaticHelper
   def get_blog_posts
-    require 'rss'
+    require 'simple-rss'
     require 'open-uri'
     
     begin
-    feed = RSS::Parser.parse( 'http://commandc.com/blog1/wp-rss.php' )
+    feed = SimpleRSS.parse open( 'http://commandc.com/blog1/wp-rss.php' )
     
     output = "<div id=\"blog_posts\">"
     output += image_tag('blog-separator-1.gif', :size => "111x60")
