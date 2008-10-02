@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   layout :http_or_xhr
   before_filter :permission, :except => :index
   
+  
   # GET /reviews
   # GET /reviews.xml
   def index

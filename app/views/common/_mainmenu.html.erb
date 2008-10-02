@@ -24,15 +24,19 @@
 	end
 	%>
 	<% if current_page? :controller => "projects", :action => "show" %>
-		<li><%= link_to_function "our work", visual_effect(:toggle_blind, "portfolio-menu"), :class => project_menu_class %>
-			<ul id="portfolio-menu" class="submenu" style="display: none;">
-				<li><%= link_to_function "by service" do |page| 
+		<li><%= link_to "our work", {}, :href => "#", :class => project_menu_class %>
+			<ul id="portfolio-menu" class="submenu">
+				<li><%= link_to_function "by service", :id => "service-link" do |page| 
 						page.visual_effect(:toggle_blind, "portfolio-service-menu")
+						page['service-link'].addClassName('current')
+						page['industry-link'].removeClassName('current')
 						page.hide("portfolio-industry-menu")
 					end %>
 				</li>
-				<li><%= link_to_function "by industry" do |page| 
+				<li><%= link_to_function "by industry", :id => "industry-link" do |page| 
 						page.visual_effect(:toggle_blind, "portfolio-industry-menu")
+						page['service-link'].removeClassName('current')
+						page['industry-link'].addClassName('current')
 						page.hide("portfolio-service-menu")
 					end %>
 				</li>
