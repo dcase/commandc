@@ -580,12 +580,12 @@ div#tab_image_links a.active {
 /***************
 * Contact Us
 ****************/
-.contact #content p {
+.contact #content div {
 	float: left;
 	margin: 0;
 }
-.contact #content p.right-col {
-	float: right;
+.contact #content div.right-col {
+	margin-left: 25px;
 }
 .contact #content label {
 	color: #ff0000;
@@ -600,13 +600,19 @@ div#tab_image_links a.active {
 	width: 100%;
 }
 .contact #content div#contact-submit {
-	text-align: right;
+	float: right;
+	clear: left;
 }
 .contact #content div#contact-submit input {
 	border: 0;
 	background: #8bc3d2;
 	color: #fff;
 	padding: 1px 5px;
+}
+.errorExplanation li {
+	color: #ff0000;
+	list-style-image: url(../images/fail.png);
+	list-style-position: inside;
 }
 
 /***************
@@ -620,6 +626,7 @@ div#tab_image_links a.active {
 	float: left;
 	width: 130px;
 	font-size: 10px;
+	padding-left: 5px;
 }
 #client_login {
 	float: left;

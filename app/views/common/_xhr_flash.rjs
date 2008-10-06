@@ -1,0 +1,2 @@
+page.replace_html :inquiry_form, :partial => "contact_form", :object => @inquiry
+flash.discard

@@ -46,10 +46,14 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
+        email = InquiryMailer.create_inquiry(@inquiry)
+        @inquiry = Inquiry.new
         flash[:notice] = 'Inquiry was successfully created.'
-        format.html { redirect_to(@inquiry) }
+        format.js 
+        format.html { redirect_to(new_inquiry_path) }
         format.xml  { render :xml => @inquiry, :status => :created, :location => @inquiry }
       else
+        format.js { render :partial => "common/xhr_flash" }
         format.html { render :action => "new" }
         format.xml  { render :xml => @inquiry.errors, :status => :unprocessable_entity }
       end

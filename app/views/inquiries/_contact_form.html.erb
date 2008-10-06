@@ -1,0 +1,43 @@
+<% form_remote_for(@inquiry) do |f| %>
+  <%= error_messages_for('inquiry', :header_message => nil, :message => nil) %>
+
+  <div style="clear: left;">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="right-col">
+    <%= f.label 'desired time frame' %><br />
+    <%= f.text_field :timeframe %>
+  </div>
+  <div>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="right-col">
+    <%= f.label 'estimated budget' %><br />
+    <%= f.text_field :budget %>
+  </div>
+  <div>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="right-col">
+    <%= f.label 'best time to reach you' %><br />
+    <%= f.text_field :reachable_at %>
+  </div>
+  <div>
+    <%= f.label 'existing URL (if any)' %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="right-col">
+    <%= f.label 'how did you hear about us?' %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div>
+    <%= f.label 'project description' %><br />
+    <%= f.text_area :description, :cols => 58, :rows => 5 %>
+  </div>
+  <div id="contact-submit">
+    <%= f.submit "submit" %>
+  </div>
+<% end %>

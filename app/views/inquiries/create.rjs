@@ -1,0 +1,5 @@
+page[:new_inquiry].reset
+page.ModalOverlay.update( render :partial => "success")
+page.ModalOverlay.show()
+flash.discard
+page.replace_html :inquiry_form, :partial => "contact_form", :object => @inquiry
