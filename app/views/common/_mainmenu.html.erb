@@ -64,7 +64,7 @@
 								<% unless child.projects.empty? %>
 									<%= link_to_function child.name do |page|
 											page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
-											page.visual_effect(:toggle_blind, "project_list#{child.id}") 
+											page.visual_effect(:toggle_blind, "project_list#{child.id}")
 										end %>
 									<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
 								<% else %>

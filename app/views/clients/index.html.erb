@@ -5,8 +5,8 @@
 
 <% for client in @featured_clients %>
 	<% div_for(client) do %>
-		<div><%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url %></div>
-		<div class="small">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
+		<div><%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url, :target => "_blank" %></div>
+		<div class="small client-caption">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
 			<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
@@ -26,7 +26,7 @@
 					<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
 					<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
 				<% end %>
-				<%= link_to client.name, client.url %>
+				<%= link_to client.name, client.url, :target => "_blank" %>
 			<% end %>
 		<% end %>
 		</ul>

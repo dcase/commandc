@@ -54,7 +54,9 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-    @project.create_imagefile(params[:imagefile])
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+      @project.create_imagefile(params[:imagefile])
+    end
     @project.categories = Category.find(params[:categories]) if params[:categories]
 
     respond_to do |format|
@@ -73,7 +75,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
-    unless params[:imagefile][:uploaded_data].empty?
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
       @project.imagefile.destroy
       @project.create_imagefile(params[:imagefile])
     end

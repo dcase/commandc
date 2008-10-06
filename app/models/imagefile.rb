@@ -3,4 +3,6 @@ class Imagefile < ActiveRecord::Base
   has_one :client, :dependent => :nullify
   has_one :project, :dependent => :nullify
   has_one :tab, :dependent => :nullify
+  
+  validates_as_attachment
 end

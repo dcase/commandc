@@ -47,7 +47,9 @@ class TabsController < ApplicationController
   # POST /tabs.xml
   def create
     @tab = Tab.new(params[:tab])
-    @tab.create_imagefile(params[:imagefile])
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+      @tab.create_imagefile(params[:imagefile])
+    end
 
     respond_to do |format|
       if @tab.save

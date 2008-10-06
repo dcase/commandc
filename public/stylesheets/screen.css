@@ -173,6 +173,9 @@ optgroup option {
 	font-weight: normal;
 	list-style: none;
 }
+div#client_login input {
+	margin: 4px 2px 4px 0;
+}
 
 /***************
 * Main Menu
@@ -507,7 +510,17 @@ img#about-rabbit {
 div.client {
 	float: left;
 	padding: 5px;
-} 
+	position: relative;
+	width: 125px;
+	height: 110px;
+	text-align: center;
+}
+div.client-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
 .sidebar-list-heading {
 	font-size: 14px;
 	font-weight: bold;
@@ -626,7 +639,7 @@ div#tab_image_links a.active {
 	float: left;
 	width: 130px;
 	font-size: 10px;
-	padding-left: 5px;
+	padding: 7px 0 0 5px;
 }
 #client_login {
 	float: left;

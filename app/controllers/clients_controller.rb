@@ -46,7 +46,9 @@ class ClientsController < ApplicationController
   # POST /clients.xml
   def create
     @client = Client.new(params[:client])
-    @client.create_imagefile(params[:imagefile])
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+      @client.create_imagefile(params[:imagefile])
+    end
 
     respond_to do |format|
       if @client.save
@@ -64,7 +66,7 @@ class ClientsController < ApplicationController
   # PUT /clients/1.xml
   def update
     @client = Client.find(params[:id])
-    unless params[:imagefile][:uploaded_data].empty?
+    if params[:imagefile][:uploaded_data].kind_of? Tempfile
       @client.imagefile.destroy
       @client.create_imagefile(params[:imagefile])
     end

@@ -29,6 +29,8 @@
 		<div>
 		<%= image_tag("pencil.png", :size => "16x16")%>
 		<%= link_to("edit portfolio item", edit_project_path(@project) )%><br />
+		<%= image_tag("fail.png", :size => "16x16")%>
+		<%= link_to("delete portfolio item", @project, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"} )%><br />
 		<%= image_tag("add.png", :size => "16x16") %>
 		<%= link_to("add new tab", new_tab_path(:project_id => @project.id)) %>
 		</div>
