@@ -1,4 +1,4 @@
-<ul class="project-list" style="display:none;" id="project_list<%= child.id %>">
+<ul class="project-list"<% unless current_category?(child.id) %> style="display:none;"<% end %> id="project_list<%= child.id %>">
 	<% for item in child.portfolio_menu_items %>
 		<% content_tag_for(:li, item) do %>
 			<% if authorized? %>

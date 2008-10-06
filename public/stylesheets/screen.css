@@ -421,6 +421,9 @@ a.red:active {
 .subsubmenu a:active {
 	color: #333;
 }
+.project-list {
+	margin: 5px 0;
+}
 .project-list li {
 	margin-left: 10px;
 	padding: 0;
@@ -451,19 +454,23 @@ a.red:active {
 .project-list a.current:link {
 	color: #ff0000;
 	text-decoration: none;
+	background: #fff;
 }
 .project-list a.current:visited {
 	color: #ff0000;
 	text-decoration: none;
+	background: #fff;
 }
 .project-list a.current:hover {
 	color: #ff0000;
 	background: #fff;
 	text-decoration: none;
+	background: #fff;
 }
 .project-list a.current:active {
 	color: #ff0000;
 	text-decoration: none;
+	background: #fff;
 }
 
 /***************

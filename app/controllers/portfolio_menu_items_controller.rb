@@ -1,8 +1,9 @@
 class PortfolioMenuItemsController < ApplicationController
-  before_filter :permission
+  before_filter :permission, :except => :set_current
   
   def set_current
-    session[:current_category] = params[:current_category]
+    session[:current_category] = params[:id]
+    render :text => params.inspect
   end
   
   def order
