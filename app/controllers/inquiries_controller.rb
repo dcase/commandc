@@ -46,7 +46,7 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
-        email = InquiryMailer.create_inquiry(@inquiry)
+        email = InquiryMailer.deliver_inquiry(@inquiry)
         @inquiry = Inquiry.new
         flash[:notice] = 'Inquiry was successfully created.'
         format.js 
