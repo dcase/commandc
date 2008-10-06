@@ -26,6 +26,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
+    
+    unless session[:current_category]
+      session[:current_category] = Category.roots.first.children.first.id
+    end
 
     respond_to do |format|
       format.html # show.html.erb
