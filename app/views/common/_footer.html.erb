@@ -1,6 +1,10 @@
 <%= render :partial => "common/clientlogin" %>
 
-<%= get_blog_posts %>
+<% if params[:controller] == "projects" && @current_category.fyi %>
+	<%= render :partial => "projects/fyi", :locals => { :current_category => @current_category } %>
+<% else %>
+	<%= get_blog_posts %>
+<% end %>
 
 <%= link_to_unless_current image_tag('contact-us-button.png', :size => "78x25", :id => "contact-us-button"), new_inquiry_path %>
 

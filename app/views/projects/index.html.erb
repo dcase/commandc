@@ -3,18 +3,11 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Imagefile</th>
-    <th>Is recent</th>
   </tr>
 
 <% for project in @projects %>
   <tr>
-    <td><%=h project.name %></td>
-    <td><%=h project.imagefile %></td>
-    <td><%=h project.is_recent %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to project.name, project_path(project) %></td>
   </tr>
 <% end %>
 </table>

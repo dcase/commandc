@@ -636,7 +636,7 @@ div#tab_image_links a.active {
 }
 
 /***************
-* Blog posts
+* Footer stuff
 ****************/
 
 #blog_posts img {
@@ -651,4 +651,13 @@ div#tab_image_links a.active {
 #client_login {
 	float: left;
 	width: 225px;
+}
+#fyi_wrapper img {
+	float: left;
+}
+#fyi {
+	float: left;
+	width: 130px;
+	font-size: 10px;
+	padding: 7px 0 0 5px;
 }

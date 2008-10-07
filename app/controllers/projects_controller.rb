@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   layout :http_or_xhr
   before_filter :permission, :except => [:list_by_category,:show]
+  before_filter :get_current_category
   
   # GET /projects
   # GET /projects.xml
@@ -106,6 +107,14 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(projects_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def get_current_category
+    if session[:current_category]
+      @current_category = Category.find(session[:current_category])
+    else
+      @current_category = Category.roots.first.children.first
     end
   end
 end
