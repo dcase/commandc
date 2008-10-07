@@ -19,6 +19,9 @@
 			 	page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
 				page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
 				page["link#{i+1}"].addClassName('active')
+				unless authorized?
+					page << "tabs.activate($$('#tab_list .accordion_toggle')[#{i}])"
+				end
 			end unless @project.tabs.count < 2 %>
 		<%end %>
 	</div>
@@ -46,6 +49,8 @@
 		<% else %>
 			<script type="text/javascript">
 			<!--
+			var tabs;
+			
 			Event.observe(window, 'load', loadAccordions, false);
 
 			var verticalAccordions = $$('.accordion_toggle');
@@ -57,7 +62,7 @@
 
 			function loadAccordions() {
 
-				var tabs = new accordion('tab_list', {
+				tabs = new accordion('tab_list', {
 					defaultSize : {
 					    width : 'auto',
 						height : 250
