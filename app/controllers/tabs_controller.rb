@@ -29,8 +29,9 @@ class TabsController < ApplicationController
   def new
     @tab = Tab.new
     @imagefile = Imagefile.new
-    @tab.project_id = params[:project_id]
-    @project = Project.find(params[:project_id])
+    if params[:project_id]
+      @tab.project = Project.find(params[:project_id])
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +50,11 @@ class TabsController < ApplicationController
     @tab = Tab.new(params[:tab])
     if params[:imagefile][:uploaded_data].kind_of? Tempfile
       @tab.create_imagefile(params[:imagefile])
+    end
+    if params[:project_id]
+      @tab.project = Project.find(params[:project_id])
+    else
+      @tab.project = Project.find(params[:tab][:project_id])
     end
 
     respond_to do |format|

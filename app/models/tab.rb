@@ -4,4 +4,5 @@ class Tab < ActiveRecord::Base
   acts_as_list :scope => :project
   
   validates_presence_of :title, :content
+  validates_presence_of :imagefile,  :message => ": A file must be selected"
 end
