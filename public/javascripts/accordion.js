@@ -207,7 +207,7 @@ accordion.prototype = {
 				  height: 'auto'
 				});*/
 				// Begin custom edit
-				Effect.Appear(this.currentAccordion.down('div'));
+				Effect.Appear(this.currentAccordion.down('div'), { duration: 0.3});
 				// End custom edit
 				this.showAccordion = this.currentAccordion;
 				this.animating = false;

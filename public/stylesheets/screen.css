@@ -698,6 +698,7 @@ div#tab_list {
 div#tab_list .accordion_toggle,
 div#tab_list .accordion_toggle_active {
 	white-space: nowrap;
+	letter-spacing: -1px;
 }
 div#tab_list .accordion_toggle a {
 	font-size: 36px;
