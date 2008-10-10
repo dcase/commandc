@@ -22,15 +22,15 @@ body{
 	position: relative;
 }
 div#container {
-	width: 880px;
+	width: 963px;
 	margin: 20px auto;
-	padding: 0 10px;
 	text-align: left;
 	background: #fff;
 	position: relative;
 }
 div#header {
-	padding: 9px 20px 11px 15px;
+	padding: 9px 14px 11px 0;
+	margin: 0 14px 0 36px;
 	height: 55px;
 	border-bottom: 1px dotted #333;
 	text-align: right;
@@ -38,26 +38,32 @@ div#header {
 div#main {
 	min-height: 420px;
 	position: relative;
+	margin: 0 26px 0 36px;
 }
 div#menu {
-	width: 190px;
-	padding: 25px 5px 20px 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+div#submenu {
 	float: left;
+	margin-top: 40px;
+	position: relative;
 }
 div#sidebar {
-	width: 185px;
+	width: 250px;
 	float: right;
 	padding: 3px 15px 0 0;
 }
 div#content {
 	width: auto;
-	margin: 0 203px 0 213px;
+	margin: 0 268px 0 213px;
 	padding: 30px 0 20px 0;
 }
 div#footer {
 	height: 70px;
-	padding: 10px;
-	margin: 0 40px 0 19px;
+	padding: 12px 20px 12px 0;
+	margin: 0 73px 0 36px;
 	border-top: 1px dotted #333;
 	position: relative;
 	text-align: left;
@@ -97,7 +103,7 @@ p#tagline {
 	font-size: 14px;
 	font-weight: bold;
 	color: #000;
-	margin: 0;
+	margin: 0 7px 0 0;
 }
 img#contact-us-button {
 	position: absolute;
@@ -109,11 +115,21 @@ img#contact-us-rabbit{
 	right: -40px;
 	top: -33px;
 }
+img#portfolio_link {
+	position: absolute;
+	top: 5px;
+	right: 4px;
+}
+img.submenu-heading {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 .modal {
 	background: #fff;
 	border: 2px solid #ff0000;
 	text-align: left;
-	padding: 15px;
+	padding: 15px 15px 25px 15px;
 	width: 35%;
 	margin: 0 auto;
 	position: relative;
@@ -176,6 +192,17 @@ optgroup option {
 div#client_login input {
 	margin: 4px 2px 4px 0;
 }
+div#client_login label {
+	color: #999;
+	font-size: 10px;
+}
+div#scroll_buttons {
+	width: 15px;
+}
+div#scroll_buttons img {
+	margin-bottom: 5px;
+	cursor: pointer;
+}
 
 /***************
 * Main Menu
@@ -212,6 +239,9 @@ div#client_login input {
 }
 .large {
 	font-size: 16px;
+}
+.larger {
+	font-size: 22px;
 }
 .huge {
 	font-size: 84px;
@@ -317,7 +347,8 @@ a.red:active {
 	font-weight: bold;
 }
 .mainmenu li {
-	white-space: nowrap;
+	display: inline;
+	margin-right: 25px;
 }
 .mainmenu a:link {
 	color: #000;
@@ -357,69 +388,76 @@ a.red:active {
 .submenu, .subsubmenu {
 	list-style: none;
 	padding: 0;
-	margin: 0;
+}
+.submenu {
+	margin: 70px 0 0 0;
 }
 .submenu li {
-	padding: 2px 10px;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: bold;
+	white-space: nowrap;
+	width: 130px;
+	height: 17px;
+	overflow: hidden;
+	padding: 2px 0;
+}
+.submenu li.overflow {
+	overflow: visible;
 }
 .subsubmenu li {
 	margin-left: 15px;
-	padding: 2px 10px;
+	padding: 2px 0;
+	width: 160px;
 	font-size: 11px;
-	font-weight: bold;
+	font-weight: normal;
+	overflow-x: hidden;
+	height: auto;
 }
 .submenu a {
-	padding: 2px 10px 4px 10px;
+	padding: 2px 130px 2px 6px;
 }
 .submenu a:link {
-	color: #666;
+	color: #000;
 	background: #fff;
 	text-decoration: none;
 }
 .submenu a:visited {
-	color: #666;
+	color: #000;
 	background: #fff;
 	text-decoration: none;
 }
 .submenu a:hover {
-	color: #fff;
+	color: #000;
 	background: #8bc3d2;
 	text-decoration: none;
 }
 .submenu a:active {
-	color: #666;
+	color: #000;
 	background: #fff;
 	text-decoration: none;
 }
 .submenu a.current:link {
-	color: #fff;
+	color: #000;
 	background: #8bc3d2;
 	text-decoration: none;
 }
 .submenu a.current:visited {
-	color: #fff;
+	color: #000;
 	background: #8bc3d2;
 	text-decoration: none;
 }
 .submenu a.current:hover {
-	color: #fff;
+	color: #000;
 	background: #8bc3d2;
 	text-decoration: none;
 }
 .submenu a.current:active {
-	color: #fff;
+	color: #000;
 	background: #8bc3d2;
 	text-decoration: none;
 }
 .subsubmenu a {
-	padding: 1px 3px;
-}
-.subsubmenu a:link,
-.subsubmenu a:visited,
-.subsubmenu a:active {
-	color: #333;
+	padding: 1px 160px 1px 3px;
 }
 .project-list {
 	margin: 5px 0;
@@ -476,18 +514,20 @@ a.red:active {
 /***************
 * Home
 ****************/
-.home div#content {
-	text-align: center;
+
+.home #content,
+.about #content {
+	margin-left: 135px;
 }
-p#home-copy {
+.home .copy {
 	color: #000;
-	font-size: 20px;
-	width: 350px;
+	font-size: 18px;
+	width: 360px;
 	text-align: left;
-	margin: 70px auto 0 auto;
+	margin: 60px 0 0 0;
 }
 #recent-projects {
-	margin-top: 40px;
+	margin-top: 27px;
 }
 .recent-project {
 	margin: 5px 0;
@@ -499,94 +539,188 @@ p#home-copy {
 /***************
 * Who We Are
 ****************/
-.about p {
-	font-size: 13px;
+img#the_scoop {
+	margin-top: 60px;
+}
+.about .copy {
+	font-size: 12px;
+	width: 325px;
 }
 img#about-rabbit {
 	position: absolute;
 	bottom: 0;
-	right: 55px;
+	right: 20px;
 }
 
 /***************
 * Clients
 ****************/
 .clients div#content {
-	padding-top: 60px;
+	padding-top: 130px;
+	margin: 0 180px 0 133px;
+}
+.clients div#submenu {
+	width: 130px;
+}
+.clients div#sidebar {
+	width: 175px;
 }
 div.client {
 	float: left;
-	padding: 5px;
 	position: relative;
-	width: 125px;
-	height: 110px;
+	height: 100px;
 	text-align: center;
 }
-div.client-caption {
+div.client div {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	text-align: center;
+	right: 0;
+	bottom: 25px;
+}
+.clients #content .top-left div,
+.clients #content .top-right div,
+.clients #content .bottom-left div,
+.clients #content .bottom-right div {
+	width: 165px;
+}
+.clients #content .top-middle div,
+.clients #content .bottom-middle div {
+	width: 200px;
+}
+.clients #content .top-left {
+	padding: 0 0 25px 0;
+	width: 165px;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.clients #content .top-middle {
+	padding: 0 0 25px 0;
+	width: 200px;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.clients #content .top-right {
+	padding: 0 0 25px 0;
+	width: 165px;
+	border-bottom: 1px solid #ccc;
+}
+.clients #content .bottom-left {
+	padding: 25px 0 0 0;
+	width: 165px;
+	border-right: 1px solid #ccc;
+}
+.clients #content .bottom-middle {
+	padding: 25px 0 0 0;
+	width: 200px;
+	border-right: 1px solid #ccc;
+}
+.clients #content .bottom-right {
+	padding: 25px 0 0 0;
+	width: 165px;
 }
 .sidebar-list-heading {
 	font-size: 14px;
 	font-weight: bold;
 	color: #ff0000;
-	margin: 45px 0 7px 0;
+	margin: 75px 0 7px 0;
 }
 .sidebar-list li {
 	list-style: none;
 	font-size: 11px;
 }
+.clients div#scroll {
+	height: 270px;
+	overflow: auto;
+}
+.clients div#scroll_buttons {
+	position: absolute;
+	top: 345px;
+	right: 20px;
+	left: auto;
+}
 
 /***************
 * Reviews
 ****************/
+.reviews div#content {
+	margin: 0 0 0 340px;
+}
+.reviews div#sidebar {
+	width: 0;
+}
 div.review {
 	background: #fff;
+}
+.reviews div#scroll_buttons {
+	position: absolute;
+	top: 365px;
+	right: 50px;
+	left: auto;
+}
+
+div#reviews_accordion {
+	overflow: auto;
+	width: 485px;
+	height: 325px;
+	position: relative;
+	margin-top: 90px;
+}
+div#reviews_accordion .accordion_toggle {
+	font-size: 14px;
+}
+div#reviews_accordion .accordion_toggle_active {
+	font-size: 16px;
 }
 
 /***************
 * Projects
 ****************/
-div#reviews_accordion {
-	overflow: auto;
-	height: 325px;
-	position: relative;
+
+.projects div#content {
+	margin: 0 168px 0 253px;
+	padding-top: 80px;
 }
-div#scroll_buttons {
-	position: absolute;
-	top: 350px;
-	left: 175px;
-	width: 15px;
+.projects .submenu-heading {
+	top: 30px;
 }
-div#scroll_buttons img {
-	margin-bottom: 5px;
-	cursor: pointer;
+.projects div#submenu {
+	width: 250px;
+}
+.projects ul.submenu {
+	margin-top: 90px;
+}
+.projects div#sidebar {
+	width: 165px;
+	padding-right: 0;
 }
 div#tab_list {
-	margin-top: 60px;
+	margin-top: 120px;
+}
+div#tab_list .accordion_toggle,
+div#tab_list .accordion_toggle_active {
+	white-space: nowrap;
 }
 div#tab_list .accordion_toggle a {
-	font-size: 18px;
+	font-size: 36px;
 	font-weight: bold;
 	text-decoration: none;
 	color: #8cc3d2;
 }
 div#tab_list .accordion_toggle_active a {
-	font-size: 18px;
+	font-size: 36px;
 	font-weight: bold;
-	text-decoration: underline;
+	text-decoration: none;
 	color: #ff0000;
 }
 .tab-copy {
 	color: #333;
 }
+div#tab_image_wrapper {
+	width: 450px;
+}
 div#tab_image_links {
 	text-align: right;
 	font-size: 18px;
 	font-weight: bold;
-	padding: 0 10px;
 }
 div#tab_image_links a {
 	color: #8cc3d2;
@@ -596,16 +730,48 @@ div#tab_image_links a.active {
 	color: #ff0000;
 	text-decoration: none;
 }
+div#project_url {
+	float: left;
+}
+div#project_url a {
+	font-size: 11px;
+	color: #ccc;
+}
+div#project_admin {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
 
 /***************
 * Contact Us
 ****************/
-.contact #content div {
+.contact div#content {
+	margin: 0 153px 0 300px;
+}
+.contact div#sidebar {
+	width: 150px;
+}
+.contact div#submenu{
+	margin-top: 65px;
+}
+div#inquiry_form {
+	width: 32.2em;
+	margin: 35px 0 15px 0;
+	float: left;
+}
+div#contact_info {
+	margin-top: 60px;
+}
+div#inquire_caption {
+	margin-top: 65px;
+}
+div#inquiry_form div {
 	float: left;
 	margin: 0;
 }
 .contact #content div.right-col {
-	margin-left: 25px;
+	margin-left: 5.8em;
 }
 .contact #content label {
 	color: #ff0000;
@@ -625,9 +791,7 @@ div#tab_image_links a.active {
 }
 .contact #content div#contact-submit input {
 	border: 0;
-	background: #8bc3d2;
-	color: #fff;
-	padding: 1px 5px;
+	padding: 0;
 }
 .errorExplanation li {
 	color: #ff0000;

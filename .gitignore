@@ -2,4 +2,3 @@
 log/*.log
 tmp/**/*
 db/*.sqlite3
-public/files/*

@@ -1,108 +1,117 @@
 <ul class="mainmenu">
-	<li><%= link_to_active_if "who we are", :controller => "static", :action => "about" %>
-	<%
-	if current_page?(clients_path) || current_page?(reviews_path)
-		client_menu_class = "current"
-	else
-		client_menu_class = "notcurrent"
-	end
-	%>
-	<li><%= link_to_function "some clients", :class => client_menu_class do |page| 
-			page.visual_effect(:toggle_blind, "clients-menu")
-			page.visual_effect(:toggle_blind, "portfolio-menu")
-		end %>
+	<li>
+		<% unless params[:controller] == "projects" %>
+			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "45x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), project_path(@first_project) %>
+		<% else %>
+			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "45x13", :alt => "our work") %>
+		<% end %></li>
+	<li>
+		<% unless current_page? :controller => 'static', :action => 'about' %>
+			<%= link_to image_tag('mainmenu/about.gif', :size => "57x13", :alt => "who we are", :mouseover => 'mainmenu/about_ro.gif'), { :controller => "static", :action => "about" } %>
+		<% else %>
+			<%= image_tag('mainmenu/about_ro.gif', :size => "57x13", :alt => "who we are" ) %>
+		<% end %></li>
+	<li>
+		<% unless params[:controller] == 'clients' || params[:controller] == 'reviews' %>
+			<%= link_to image_tag('mainmenu/clients.gif', :size => "53x13", :alt => "our clients", :mouseover => 'mainmenu/clients_ro.gif'), clients_path %>
+		<% else %>
+			<%= image_tag('mainmenu/clients_ro.gif', :size => "53x13", :alt => "our clients") %>
+		<% end %></li>
+	<li><%= link_to image_tag('mainmenu/blog.gif', :size => "41x13", :alt => "our blog", :mouseover => 'mainmenu/blog_ro.gif'), {}, { :href => "http://commandc.com/blog1", :target => "_blank"} %></li>
+	<li>
+		<% unless params[:controller] == 'inquiries' %>
+			<%= link_to image_tag('mainmenu/contact.gif', :size => "52x13", :alt => "contact us", :mouseover => 'mainmenu/contact_ro.gif'), new_inquiry_path %>
+		<% else %>
+			<%= image_tag('mainmenu/contact_ro.gif', :size => "52x13", :alt => "contact us") %>
+		<% end %></li>
+</ul>
+
+
+
+<% content_for :submenu do %>
+	<div id="submenu">
+	<% if current_page?( :controller => "clients", :action => "index") || current_page?( :controller => "reviews", :action => "index") %>
+		<% if params[:controller] == "clients" %>
+			<%= image_tag 'check-em.gif', :class => 'submenu-heading', :size => '307x50', :alt => 'check &rsquo;em' %>
+		<% else %>
+			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '300x63', :alt => 'ya heard?' %>
+		<% end %>
 		<ul id="clients-menu" class="submenu" <% unless current_page?(clients_path) || current_page?(reviews_path) %>style="display: none;"<% end %>>
 			<li><%= link_to_active_if "client list", clients_path %></li>
 			<li><%= link_to_active_if "what they say", reviews_path %></li>
 		</ul>
-	</li>
-	<li><a href="http://commandc.com/blog1" target="_blank">our blog</a></li>
-	<li><a href="http://shop.commandc.com/" target="_blank">our shop</a></li>
-	<li><%= link_to_active_if 'contact us', new_inquiry_path %></li>
-	<%
-	if current_page? :controller => "projects", :action => "show"
-		project_menu_class = "current"
-	else
-		project_menu_class = "notcurrent"
-	end
-	%>
-	<% if current_page? :controller => "projects", :action => "show" %>
-		<li><%= link_to_function "our work", :class => project_menu_class do |page|
-				page.visual_effect(:toggle_blind, "portfolio-menu")
-				page.visual_effect(:blind_up, "clients-menu")
-			end %>
-			<ul id="portfolio-menu" class="submenu">
-				<% if current_category?(1) then service_class = "current" else service_class = "notcurrent" end %>
-				<li><%= link_to_function "by service", :id => "service-link", :class => service_class do |page| 
-						page.visual_effect(:toggle_blind, "portfolio-service-menu")
-						page['service-link'].addClassName('current')
-						page['industry-link'].removeClassName('current')
-						page.hide("portfolio-industry-menu")
-						page.call 'set_current_category', 1
-					end %>
-				</li>
-				<% if current_category?(2) then industry_class = "current" else industry_class = "notcurrent" end %>
-				<li><%= link_to_function "by industry", :id => "industry-link", :class => industry_class do |page| 
-						page.visual_effect(:toggle_blind, "portfolio-industry-menu")
-						page['service-link'].removeClassName('current')
-						page['industry-link'].addClassName('current')
-						page.hide("portfolio-service-menu")
-						page.call 'set_current_category', 2
-					end %>
-				</li>
-				<li>
-					<ul class="subsubmenu" id="portfolio-service-menu"<% unless current_category?(1) %> style="display: none;"<% end%>>
-						<% services = Category.find(1, {:order => "position"}) %>
-						<% services.children.each do |child| %>
-							<li>
-								<% unless child.projects.empty? %>
-									<% 
-									if current_category? child.id 
-										link_class = "current"
-									else
-										link_class = "notcurrent"
-									end
-									%>
-									<%= link_to_function child.name, :class => link_class do |page|
-											page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
-											page.visual_effect(:toggle_blind, "project_list#{child.id}")
-											page.call 'set_current_category', child.id
-										end %>
-									<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
-								<% else %>
-									<%= link_to child.name, {}, {:href => "#"} %>
-								<% end %>
-							</li>
-						<% end %>
-					</ul>
-					<ul class="subsubmenu" id="portfolio-industry-menu"<% unless current_category?(2) %> style="display: none;"<% end %>>
-						<% industries = Category.find(2) %>
-						<% industries.children.each do |child| %>
-							<li>
-								<% unless child.projects.empty? %>
-									<% 
-									if current_category? child.id 
-										link_class = "current"
-									else
-										link_class = "notcurrent"
-									end
-									%>
-									<%= link_to_function child.name, :class => link_class do |page|
-											page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
-											page.visual_effect(:toggle_blind, "project_list#{child.id}")
-											page.call 'set_current_category', child.id
-										end %>
-									<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
-								<% else %>
-									<%= link_to child.name, {}, {:href => "#"} %>
-								<% end %>
-							</li>
-						<% end %>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	<% else %>
-		<li><%= link_to "our work", project_path(Category.roots.first.children.first.projects.first) %></li>
+	<% elsif current_page? :controller => "projects", :action => "show" %>
+		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '232x48', :alt => 'the goods' %>
+		<ul id="portfolio-menu" class="submenu">
+			<% if current_category?(1) then service_class = "current" else service_class = "notcurrent" end %>
+			<li><%= link_to_function "by service", :id => "service-link", :class => service_class do |page| 
+					page.visual_effect(:toggle_blind, "portfolio-service-menu")
+					page['service-link'].addClassName('current')
+					page['industry-link'].removeClassName('current')
+					page.hide("portfolio-industry-menu")
+					page.call 'set_current_category', 1
+				end %>
+			</li>
+			<% if current_category?(2) then industry_class = "current" else industry_class = "notcurrent" end %>
+			<li><%= link_to_function "by industry", :id => "industry-link", :class => industry_class do |page| 
+					page.visual_effect(:toggle_blind, "portfolio-industry-menu")
+					page['service-link'].removeClassName('current')
+					page['industry-link'].addClassName('current')
+					page.hide("portfolio-service-menu")
+					page.call 'set_current_category', 2
+				end %>
+			</li>
+			<li class="overflow">
+				<ul class="subsubmenu" id="portfolio-service-menu"<% unless current_category?(1) %> style="display: none;"<% end %>>
+					<% services = Category.find(1, {:order => "position"}) %>
+					<% services.children.each do |child| %>
+						<li>
+							<% unless child.projects.empty? %>
+								<% 
+								if current_category? child.id 
+									link_class = "current"
+								else
+									link_class = "notcurrent"
+								end
+								%>
+								<%= link_to_function child.name, :class => link_class do |page|
+										page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
+										page.visual_effect(:toggle_blind, "project_list#{child.id}")
+										page.call 'set_current_category', child.id
+									end %>
+								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
+							<% else %>
+								<%= link_to child.name, {}, {:href => "#"} %>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+				<ul class="subsubmenu" id="portfolio-industry-menu"<% unless current_category?(2) %> style="display: none;"<% end %>>
+					<% industries = Category.find(2) %>
+					<% industries.children.each do |child| %>
+						<li>
+							<% unless child.projects.empty? %>
+								<% 
+								if current_category? child.id 
+									link_class = "current"
+								else
+									link_class = "notcurrent"
+								end
+								%>
+								<%= link_to_function child.name, :class => link_class do |page|
+										page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
+										page.visual_effect(:toggle_blind, "project_list#{child.id}")
+										page.call 'set_current_category', child.id
+									end %>
+								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
+							<% else %>
+								<%= link_to child.name, {}, {:href => "#"} %>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
 	<% end %>
-</ul>
+	</div><!-- EOF DIV 'submenu' -->
+<% end %>

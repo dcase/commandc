@@ -24,6 +24,7 @@
 			<div id="menu">
 				<%= render :partial => "common/mainmenu" %>
 			</div><!-- end DIV 'menu' -->
+			<%= yield :submenu %>
 			<div id="sidebar"><%= yield :sidebar %></div><!-- end DIV 'sidebar' -->
 			<div id="content">
 				<% if flash[:notice] -%>

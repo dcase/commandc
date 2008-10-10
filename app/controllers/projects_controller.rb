@@ -29,7 +29,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     
     unless session[:current_category]
-      session[:current_category] = Category.roots.first.children.first.id
+      session[:current_category] = @project.categories.first.id
+    else
+      project_categories = @project.categories.collect{|cat| cat.id}
+      unless project_categories.include? session[:current_category].to_i
+        session[:current_category] = project_categories.first
+      end
     end
 
     respond_to do |format|
@@ -59,7 +64,7 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+    if params[:imagefile][:uploaded_data].size > 0
       @project.create_imagefile(params[:imagefile])
     end
     @project.categories = Category.find(params[:categories]) if params[:categories]
@@ -80,7 +85,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
-    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+    if params[:imagefile][:uploaded_data].size > 0
       @project.imagefile.destroy
       @project.create_imagefile(params[:imagefile])
     end

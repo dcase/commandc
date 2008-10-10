@@ -21,7 +21,7 @@ module ApplicationHelper
     link_to( link_title, link_path, opts.merge( {:class => classes} ) )
   end
   
-  def current_category?( category_id )
+  def current_category?( category_id = 1 )
     current_category = Category.get(category_id)
     
     if current_category.id == session[:current_category].to_i || current_category.descendants_ids.include?( session[:current_category].to_i)

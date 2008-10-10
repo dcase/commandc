@@ -1,12 +1,15 @@
 <% # Begin Config section %>
 <% content_for :title do %>COMMAND C > Our Clients<% end %>
 <% content_for :bodyclass do %>clients<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag 'class-scroll' %>
+<% end %>
 <% # End Config section %>
 
 <% for client in @featured_clients %>
-	<% div_for(client) do %>
-		<div><%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url, :target => "_blank" %></div>
-		<div class="small client-caption">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
+	<% div_for(client, :class => cycle('top-left', 'top-middle', 'top-right', 'bottom-left', 'bottom-middle', 'bottom-right')) do %>
+		<%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url, :target => "_blank" %>
+		<div class="small">>> <a href="<%=h client.url %>" target="_blank"><%=h client.name %></a></div>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>
 			<%= link_to( image_tag("fail.png", :size => "16x16"), client, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
@@ -16,7 +19,7 @@
 
 <% content_for :sidebar do %>
 	<%= render :partial => "common/portfoliolink" %>
-	<div class="sidebar-list-heading">more...</div>
+	<div class="sidebar-list-heading">oh there&rsquo;s more...</div>
 	<div id="scroll">
 		<ul class="sidebar-list" id="client_list">
 		<% for client in @clients %>
@@ -34,4 +37,10 @@
 			<%= sortable_element :client_list, :url => { :action => "order" }, :handle => "drag_handle" %>
 		<% end %>
 	</div>
+	<%= render :partial => "common/scroll_buttons" %>
+	<script type="text/javascript">
+	<!--
+	var scroll1 = new TextScroll('scroll1','scroll','scroll_up','scroll_down');
+	//-->
+	</script>
 <% end %>

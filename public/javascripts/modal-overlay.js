@@ -41,7 +41,7 @@ var ModalOverlay = {
 // ==========================================================================
 
 Event.observe(window, 'load', function() {
-    Element.insert(document.body, '<div id="modal-overlay" style="position:fixed;top:10em;left:2em;right:2em;bottom:0;z-index:10001;display:none;"></div><div id="modal-overlay-dimmer" style="position:fixed;top:0;left:0;bottom:0;right:0;background-color:black;z-index:10000;display:none;"></div>', {position: 'bottom'}); 
+    Element.insert(document.body, '<div id="modal-overlay" style="position:fixed;top:30%;left:2em;right:2em;bottom:0;z-index:10001;display:none;"></div><div id="modal-overlay-dimmer" style="position:fixed;top:0;left:0;bottom:0;right:0;background-color:black;z-index:10000;display:none;"></div>', {position: 'bottom'}); 
 });
 
 if(typeof Event.addBehavior != 'undefined') {

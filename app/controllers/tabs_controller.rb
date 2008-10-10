@@ -48,7 +48,7 @@ class TabsController < ApplicationController
   # POST /tabs.xml
   def create
     @tab = Tab.new(params[:tab])
-    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+    if params[:imagefile][:uploaded_data].size > 0
       @tab.create_imagefile(params[:imagefile])
     end
     if params[:project_id]
@@ -73,7 +73,7 @@ class TabsController < ApplicationController
   # PUT /tabs/1.xml
   def update
     @tab = Tab.find(params[:id])
-    if params[:imagefile][:uploaded_data].kind_of? Tempfile
+    if params[:imagefile][:uploaded_data].size > 0
       @tab.imagefile.destroy
       @tab.create_imagefile(params[:imagefile])
     end

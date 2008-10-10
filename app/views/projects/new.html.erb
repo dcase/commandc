@@ -7,6 +7,10 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+  <p>
+    <%= f.label 'Project URL' %><br />
+    <%= f.text_field :url %>
+  </p>
   <% fields_for :imagefile do |a| %>
   <p>
     <%= a.label 'Thumbnail' %><br />

@@ -11,8 +11,8 @@
 	<% for review in @reviews %>
 		<% div_for review do %>
 			<div class="accordion_toggle">
-				<span class="large blue bold upper"><%= review.client.name %></span>
-				<span class="large lightgray bold"><%= review.reviewer %></span>
+				<span class="red bold upper"><%= review.client.name %>:</span>
+				<span class="lightgray bold"><%= review.reviewer %></span>
 				<% if authorized? %>
 					<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_review_path(review), {:title => "Edit"}) %>
 					<%= link_to( image_tag("fail.png", :size => "16x16"), review, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"}) %>
@@ -25,10 +25,7 @@
 		<% end %>
 	<% end %>
 </div>
-<div id="scroll_buttons">
-	<%= image_tag 'arrow-up.png', :id => "scroll_up", :size => "14x12", :alt => "Scroll Up" %>
-	<%= image_tag 'arrow-down.png', :id => "scroll_	down", :size => "14x12", :alt => "Scroll Up" %>
-</div>
+<%= render :partial => "common/scroll_buttons" %>
 <% if authorized? %>
 	<%= sortable_element :reviews_accordion, :url => { :action => "order"}, :handle => "drag_handle", :tag => "div"  %>
 <% end %>
@@ -47,7 +44,8 @@ function loadAccordions() {
 	
 	var reviews = new accordion('reviews_accordion', {
 		defaultSize : {
-		    width : 450
+		    width : 485,
+			height: 'auto'
 		}
 	});
 

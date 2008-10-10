@@ -1,9 +1,11 @@
 <% div_for(tab) do %>
 	<div class="tab-heading accordion_toggle">
 		<%= link_to_function tab.title do |page|
-		 	page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
-			page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
-			page["link#{i+1}"].addClassName('active')
+			if @project.tabs.count > 1
+		 		page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
+				page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
+				page["link#{i+1}"].addClassName('active')
+			end
 		end %>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_tab_path(tab), {:title => "Edit"}) %>

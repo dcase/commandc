@@ -203,9 +203,9 @@ accordion.prototype = {
 					});	
 					// End custom edit
 				}
-				$(this.currentAccordion).setStyle({
+				/*$(this.currentAccordion).setStyle({
 				  height: 'auto'
-				});
+				});*/
 				// Begin custom edit
 				Effect.Appear(this.currentAccordion.down('div'));
 				// End custom edit

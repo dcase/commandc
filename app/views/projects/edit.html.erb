@@ -1,11 +1,15 @@
 <h1>Editing project</h1>
 
-<% form_for(@project) do |f| %>
+<% form_for(@project, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label 'Project URL' %><br />
+    <%= f.text_field :url %>
   </p>
   <% if @project.imagefile %>
     <%= image_tag(@project.imagefile.public_filename(:project_thumb)) %>
