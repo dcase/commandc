@@ -4,4 +4,7 @@ class Client < ActiveRecord::Base
   acts_as_list
   
   validates_presence_of :name, :url
+  validates_presence_of :imagefile,
+    :if => Proc.new { |c| c.is_featured == true },
+    :message => ": featured clients need a logo!"
 end
