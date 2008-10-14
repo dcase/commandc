@@ -108,12 +108,12 @@ p#tagline {
 img#contact-us-button {
 	position: absolute;
 	right: 0;
-	top: 18px;
+	bottom: 45px;
 }
 img#contact-us-rabbit{
 	position: absolute;
 	right: -40px;
-	top: -33px;
+	bottom: 0;
 }
 img#portfolio_link {
 	position: absolute;
@@ -345,6 +345,7 @@ a.red:active {
 	margin: 0;
 	font-size: 16px;
 	font-weight: bold;
+	width: 125%;
 }
 .mainmenu li {
 	display: inline;
@@ -493,22 +494,26 @@ a.red:active {
 	color: #ff0000;
 	text-decoration: none;
 	background: #fff;
+	font-weight: bold;
 }
 .project-list a.current:visited {
 	color: #ff0000;
 	text-decoration: none;
 	background: #fff;
+	font-weight: bold;
 }
 .project-list a.current:hover {
 	color: #ff0000;
 	background: #fff;
 	text-decoration: none;
 	background: #fff;
+	font-weight: bold;
 }
 .project-list a.current:active {
 	color: #ff0000;
 	text-decoration: none;
 	background: #fff;
+	font-weight: bold;
 }
 
 /***************
@@ -530,10 +535,11 @@ a.red:active {
 	margin-top: 27px;
 }
 .recent-project {
-	margin: 5px 0;
+	margin: 5px 0 10px 0;
 }
 .recent-project img {
 	border: 1px solid #ccc;
+	margin-bottom: 5px;
 }
 
 /***************
@@ -556,14 +562,15 @@ img#about-rabbit {
 * Clients
 ****************/
 .clients div#content {
-	padding-top: 130px;
-	margin: 0 180px 0 133px;
+	padding-top: 140px;
+	margin: 0 198px 0 133px;
 }
 .clients div#submenu {
 	width: 130px;
 }
 .clients div#sidebar {
-	width: 175px;
+	width: 195px;
+	padding: 3px 0 0 0;
 }
 div.client {
 	float: left;
@@ -576,52 +583,60 @@ div.client div {
 	right: 0;
 	bottom: 25px;
 }
+.clients #submenu .submenu-heading {
+	top: 9px;
+}
+.clients .submenu {
+	margin-top: 75px;
+}
 .clients #content .top-left div,
 .clients #content .top-right div,
 .clients #content .bottom-left div,
 .clients #content .bottom-right div {
-	width: 165px;
+	width: 160px;
 }
 .clients #content .top-middle div,
 .clients #content .bottom-middle div {
-	width: 200px;
+	width: 210px;
 }
 .clients #content .top-left {
-	padding: 0 0 25px 0;
-	width: 165px;
+	padding: 20px 0 25px 0;
+	width: 160px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-middle {
-	padding: 0 0 25px 0;
-	width: 200px;
+	padding: 20px 0 25px 0;
+	width: 210px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-right {
-	padding: 0 0 25px 0;
-	width: 165px;
+	padding: 20px 0 25px 0;
+	width: 160px;
 	border-bottom: 1px solid #ccc;
 }
 .clients #content .bottom-left {
-	padding: 25px 0 0 0;
-	width: 165px;
+	padding: 25px 0 20px 0;
+	width: 160px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-middle {
-	padding: 25px 0 0 0;
-	width: 200px;
+	padding: 25px 0 20px 0;
+	width: 210px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-right {
-	padding: 25px 0 0 0;
-	width: 165px;
+	padding: 25px 0 20px 0;
+	width: 160px;
 }
 .sidebar-list-heading {
-	font-size: 14px;
+	font-size: 22px;
 	font-weight: bold;
 	color: #ff0000;
 	margin: 75px 0 7px 0;
+	white-space: nowrap;
+	letter-spacing: -1px;
 }
 .sidebar-list li {
 	list-style: none;
@@ -676,20 +691,20 @@ div#reviews_accordion .accordion_toggle_active {
 ****************/
 
 .projects div#content {
-	margin: 0 168px 0 253px;
+	margin: 0 163px 0 273px;
 	padding-top: 80px;
 }
 .projects .submenu-heading {
-	top: 30px;
+	top: 20px;
 }
 .projects div#submenu {
-	width: 250px;
+	width: 270px;
 }
 .projects ul.submenu {
-	margin-top: 90px;
+	margin-top: 80px;
 }
 .projects div#sidebar {
-	width: 165px;
+	width: 160px;
 	padding-right: 0;
 }
 div#tab_list {
@@ -722,10 +737,12 @@ div#tab_image_links {
 	text-align: right;
 	font-size: 18px;
 	font-weight: bold;
+	padding-top: 8px;
 }
 div#tab_image_links a {
 	color: #8cc3d2;
 	text-decoration: none;
+	margin: 0 -2px;
 }
 div#tab_image_links a.active {
 	color: #ff0000;
@@ -733,10 +750,26 @@ div#tab_image_links a.active {
 }
 div#project_url {
 	float: left;
+	margin-top: 6px;
 }
-div#project_url a {
+div#project_url a:link,
+div#project_url a:visited {
 	font-size: 11px;
-	color: #ccc;
+	color: #999;
+	font-weight: normal;
+	margin: 0;
+}
+div#project_url a:hover {
+	font-size: 11px;
+	color: #ff0000;
+	font-weight: normal;
+	margin: 0;
+}
+div#project_url a:active {
+	font-size: 11px;
+	color: #999;
+	font-weight: normal;
+	margin: 0;
 }
 div#project_admin {
 	position: absolute;
@@ -759,7 +792,6 @@ div#project_admin {
 div#inquiry_form {
 	width: 32.2em;
 	margin: 35px 0 15px 0;
-	float: left;
 }
 div#contact_info {
 	margin-top: 60px;
@@ -767,17 +799,13 @@ div#contact_info {
 div#inquire_caption {
 	margin-top: 65px;
 }
-div#inquiry_form div {
-	float: left;
-	margin: 0;
-}
-.contact #content div.right-col {
-	margin-left: 5.8em;
-}
 .contact #content label {
 	color: #ff0000;
 	text-transform: lowercase;
 	margin-top: 8px;
+}
+#inquiry_form .right-col {
+	width: 13.1em;
 }
 .contact #content input, .contact #content textarea {
 	border: 1px solid #000;
@@ -786,11 +814,10 @@ div#inquiry_form div {
 .contact #content textarea {
 	width: 100%;
 }
-.contact #content div#contact-submit {
-	float: right;
-	clear: left;
+.contact #content #contact-submit {
+	text-align: right;
 }
-.contact #content div#contact-submit input {
+.contact #content #contact-submit input {
 	border: 0;
 	padding: 0;
 }
@@ -798,6 +825,9 @@ div#inquiry_form div {
 	color: #ff0000;
 	list-style-image: url(../images/fail.png);
 	list-style-position: inside;
+}
+.fieldWithErrors input {
+	background: #fcfccc;
 }
 
 /***************

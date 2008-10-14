@@ -1,43 +1,62 @@
 <% form_remote_for(@inquiry) do |f| %>
-  <%= error_messages_for('inquiry', :header_message => nil, :message => nil) %>
-
-  <div style="clear: left;">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :size => "23" %>
-  </div>
-  <div class="right-col">
-    <%= f.label 'desired time frame' %><br />
-    <%= f.text_field :timeframe, :size => "23" %>
-  </div>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :size => "23" %>
-  </div>
-  <div class="right-col">
-    <%= f.label 'estimated budget' %><br />
-    <%= f.text_field :budget, :size => "23" %>
-  </div>
-  <div>
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, :size => "23" %>
-  </div>
-  <div class="right-col">
-    <%= f.label 'best time to reach you' %><br />
-    <%= f.text_field :reachable_at, :size => "23" %>
-  </div>
-  <div>
-    <%= f.label 'existing URL (if any)' %><br />
-    <%= f.text_field :url, :size => "23" %>
-  </div>
-  <div class="right-col">
-    <%= f.label 'how did you hear about us?' %><br />
-    <%= f.text_field :source, :size => "23"	 %>
-  </div>
-  <div>
-    <%= f.label 'project description' %><br />
-    <%= f.text_area :description, :cols => 58, :rows => 5 %>
-  </div>
-  <div id="contact-submit">
-    <%= image_submit_tag 'submit-button.gif', :onmouseover => "this.src = '/images/submit-button_ro.gif'", :onmouseout => "this.src = '/images/submit-button.gif'" %>
-  </div>
+<table cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+		  <td colspan="2">
+			<%= error_messages_for('inquiry', :header_message => nil, :message => nil) %>
+		  </td>
+		</tr>
+		<tr>
+  		  <td>
+			<div><%= f.label :name %></div>
+		    <%= f.text_field :name, :size => "23" %>
+		  </td>
+		  <td class="right-col">
+		    <div><%= f.label 'desired time frame' %></div>
+		    <%= f.text_field :timeframe, :size => "23" %>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    <div><%= f.label :email %></div>
+		    <%= f.text_field :email, :size => "23" %>
+		  </td>
+		  <td class="right-col">
+		    <div><%= f.label 'estimated budget' %></div>
+		    <%= f.text_field :budget, :size => "23" %>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    <div><%= f.label :phone %></div>
+		    <%= f.text_field :phone, :size => "23" %>
+		  </td>
+		  <td class="right-col">
+		    <div><%= f.label 'best time to reach you' %></div>
+		    <%= f.text_field :reachable_at, :size => "23" %>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    <div><%= f.label 'existing URL (if any)' %></div>
+		    <%= f.text_field :url, :size => "23" %>
+		  </td>
+		  <td class="right-col">
+		    <div><%= f.label 'how did you hear about us?' %></div>
+		    <%= f.text_field :source, :size => "23"	 %>
+		  </td>
+		</tr>
+		<tr>
+		  <td colspan="2">
+		    <div><%= f.label 'project description' %></div>
+		    <%= f.text_area :description, :cols => 58, :rows => 5 %>
+		  </td>
+		</tr>
+		<tr>
+		  <td colspan="2" id="contact-submit">
+		    <%= image_submit_tag 'submit-button.gif', :onmouseover => "this.src = '/images/submit-button_ro.gif'", :onmouseout => "this.src = '/images/submit-button.gif'" %>
+		  </td>
+		</tr>
+	</tbody>
+</table>
 <% end %>
