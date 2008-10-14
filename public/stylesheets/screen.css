@@ -564,6 +564,7 @@ img#about-rabbit {
 .clients div#content {
 	padding-top: 140px;
 	margin: 0 198px 0 133px;
+	height: 300px;
 }
 .clients div#submenu {
 	width: 130px;
@@ -826,6 +827,9 @@ div#inquire_caption {
 	list-style-image: url(../images/fail.png);
 	list-style-position: inside;
 }
+.errorExplanation img {
+	vertical-align: middle;
+}
 .fieldWithErrors input {
 	background: #fcfccc;
 }
@@ -855,4 +859,37 @@ div#inquire_caption {
 	width: 130px;
 	font-size: 10px;
 	padding: 7px 0 0 5px;
+}
+/***************
+* Admin login
+****************/
+.admin div#content {
+	margin: 0 0 0 85px;
+}
+.admin div#sidebar {
+	width: 0px;
+}
+.admin div#submenu{
+	margin-top: 82px;
+}
+.admin #please-login {
+	margin-top: 100px;
+}
+.admin table {
+	margin: 25px 0 0 38px;
+}
+.admin td {
+	padding: 2px 0;
+}
+.admin .label {
+	width: 60px;
+	color: #999;
+	text-transform: lowercase;
+}
+.admin .error {
+	color: #ff0000;
+}
+.admin #submit {
+	text-align: right;
+	padding-top: 15px;
 }
