@@ -794,6 +794,9 @@ div#inquiry_form {
 	width: 32.2em;
 	margin: 35px 0 15px 0;
 }
+div#inquiry_form table {
+	width: 32.2em;
+}
 div#contact_info {
 	margin-top: 60px;
 }
