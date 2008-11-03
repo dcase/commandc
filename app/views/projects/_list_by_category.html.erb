@@ -4,7 +4,7 @@
 			<% if authorized? %>
 				<%= image_tag("drag_handle.png", :size => "16x16", :class => "drag_handle") %>
 			<% end %>
-			<%= link_to_active_if item.project.name, project_path(item.project) %>
+			<%= link_to_active_if item.project.name, project_path(item.project)%>
 		<% end %>
 	<% end%>
 </ul>

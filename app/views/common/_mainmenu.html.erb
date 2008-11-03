@@ -1,7 +1,7 @@
 <ul class="mainmenu">
 	<li>
 		<% unless params[:controller] == "projects" %>
-			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), project_path(@first_project) %>
+			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), '', :href => '/custom-website-design.html' %>
 		<% else %>
 			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "46x13", :alt => "our work") %>
 		<% end %></li>
@@ -32,7 +32,7 @@
 	<div id="submenu">
 	<% if current_page?( :controller => "clients", :action => "index") || current_page?( :controller => "reviews", :action => "index") %>
 		<% if params[:controller] == "clients" %>
-			<%= image_tag 'check-em.gif', :class => 'submenu-heading', :size => '304x50', :alt => 'check &rsquo;em' %>
+			<%= image_tag 'the-love.gif', :class => 'submenu-heading', :size => '235x50', :alt => 'the love' %>
 		<% else %>
 			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '299x63', :alt => 'ya heard?' %>
 		<% end %>

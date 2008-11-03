@@ -17,7 +17,7 @@ body{
 	font-family: arial,helvetica,sans-serif;
 	font-size: 13px;
 	text-align: center;
-	background: url(../images/bgstripe.png);
+	background: url(../images/bg_lines_new.gif);
 	color: #000;
 	position: relative;
 }
@@ -32,13 +32,13 @@ div#header {
 	padding: 9px 14px 11px 0;
 	margin: 0 14px 0 36px;
 	height: 55px;
-	border-bottom: 1px dotted #333;
 	text-align: right;
 }
 div#main {
 	min-height: 420px;
 	position: relative;
 	margin: 0 26px 0 36px;
+	background: transparent url(../images/hr_dot_black.gif) repeat-x scroll 0 0;
 }
 div#menu {
 	position: absolute;
@@ -65,7 +65,7 @@ div#footer {
 	height: 70px;
 	padding: 12px 20px 12px 0;
 	margin: 0 73px 0 36px;
-	border-top: 1px dotted #333;
+	background: transparent url(../images/hr_dot_black.gif) repeat-x scroll 0 0;
 	position: relative;
 	text-align: left;
 }
@@ -105,6 +105,8 @@ p#tagline {
 	font-weight: bold;
 	color: #000;
 	margin: 0 7px 0 0;
+	word-spacing: 1px;
+	letter-spacing: -1px;
 }
 img#contact-us-button {
 	position: absolute;
@@ -527,10 +529,11 @@ a.red:active {
 }
 .home .copy {
 	color: #000;
-	font-size: 18px;
-	width: 360px;
+	font-size: 17px;
+	width: 415px;
 	text-align: left;
 	margin: 60px 0 0 0;
+	line-height: 22px;
 }
 #recent-projects {
 	margin-top: 27px;
@@ -552,6 +555,7 @@ img#the_scoop {
 .about .copy {
 	font-size: 12px;
 	width: 325px;
+	line-height: 17px;
 }
 img#about-rabbit {
 	position: absolute;
@@ -563,7 +567,7 @@ img#about-rabbit {
 * Clients
 ****************/
 .clients div#content {
-	padding-top: 140px;
+	padding-top: 155px;
 	margin: 0 198px 0 133px;
 	height: 300px;
 }
@@ -583,14 +587,9 @@ div.client {
 div.client div {
 	position: absolute;
 	right: 0;
-	bottom: 25px;
+	bottom: 20px;
 }
-.clients #submenu .submenu-heading {
-	top: 9px;
-}
-.clients .submenu {
-	margin-top: 75px;
-}
+
 .clients #content .top-left div,
 .clients #content .top-right div,
 .clients #content .bottom-left div,
@@ -602,34 +601,34 @@ div.client div {
 	width: 210px;
 }
 .clients #content .top-left {
-	padding: 20px 0 25px 0;
+	padding: 15px 0 20px 0;
 	width: 160px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-middle {
-	padding: 20px 0 25px 0;
+	padding: 15px 0 20px 0;
 	width: 210px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-right {
-	padding: 20px 0 25px 0;
+	padding: 15px 0 20px 0;
 	width: 160px;
 	border-bottom: 1px solid #ccc;
 }
 .clients #content .bottom-left {
-	padding: 25px 0 20px 0;
+	padding: 20px 0 15px 0;
 	width: 160px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-middle {
-	padding: 25px 0 20px 0;
+	padding: 20px 0 15px 0;
 	width: 210px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-right {
-	padding: 25px 0 20px 0;
+	padding: 20px 0 15px 0;
 	width: 160px;
 }
 .sidebar-list-heading {
@@ -653,6 +652,19 @@ div.client div {
 	top: 345px;
 	right: 20px;
 	left: auto;
+}
+
+/***************
+* Clients/Reviews
+****************/
+
+.clients #submenu .submenu-heading,
+.reviews #submenu .submenu-heading {
+	top: 9px;
+}
+.clients .submenu,
+.reviews .submenu {
+	margin-top: 75px;
 }
 
 /***************

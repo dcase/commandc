@@ -4,4 +4,5 @@ class Category < ActiveRecord::Base
   has_many :projects, :through => :portfolio_menu_items
   
   validates_presence_of :name
+  
 end

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   layout :http_or_xhr
-  before_filter :permission, :except => [:list_by_category,:show]
+  before_filter :permission, :except => [:list_by_category, :show]
   before_filter :get_current_category
   
   # GET /projects
@@ -39,18 +39,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @project }
-    end
-  end
-
-  # GET /projects/new
-  # GET /projects/new.xml
-  def new
-    @project = Project.new
-    @imagefile = Imagefile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.xml  { render :xml => @project }
     end
   end

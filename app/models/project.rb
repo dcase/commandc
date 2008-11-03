@@ -8,4 +8,5 @@ class Project < ActiveRecord::Base
   validates_presence_of :imagefile,
     :if => Proc.new { |p| p.is_recent == true },
     :message => ": recent projects need a thumbnail"
+    
 end
