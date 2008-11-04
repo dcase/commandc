@@ -1,7 +1,7 @@
 <ul class="mainmenu">
 	<li>
 		<% unless params[:controller] == "projects" %>
-			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), '', :href => '/custom-website-design.html' %>
+			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), category_project_path(@first_category,@first_project) %>
 		<% else %>
 			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "46x13", :alt => "our work") %>
 		<% end %></li>
@@ -40,7 +40,7 @@
 			<li><%= link_to_active_if "client list", clients_path %></li>
 			<li><%= link_to_active_if "what they say", reviews_path %></li>
 		</ul>
-	<% elsif current_page? :controller => "projects", :action => "show" %>
+	<% elsif params[:controller] == "projects" || params[:controller] == "categories" %>
 		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '237x50', :alt => 'the goods' %>
 		<ul id="portfolio-menu" class="submenu">
 			<% if current_category?(1) then service_class = "current" else service_class = "notcurrent" end %>
@@ -75,11 +75,12 @@
 								end
 								first_project = Project.find(child.projects.first)
 								%>
-								<%= link_to_function child.name, :url => project_path(first_project), :class => link_class do |page|
+								<!--<%= link_to_function child.name, :url => category_project_path(child,first_project), :class => link_class do |page|
 										# page.select("#portfolio-service-menu .project-list").each do |item| item.hide end
 										# page.visual_effect(:toggle_blind, "project_list#{child.id}")
-										page.call 'set_current_category', child.id, project_path(first_project)
-									end %>
+										page.call 'set_current_category', child.id, category_project_path(child,first_project)
+									end %>-->
+								<%= link_to child.name, category_path(child), :class => link_class %>
 								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
 							<% else %>
 								<%= link_to child.name, {}, {:href => "#"} %>
@@ -100,11 +101,12 @@
 								end
 								first_project = Project.find(child.projects.first)
 								%>
-								<%= link_to_function child.name, :url => project_path(first_project), :class => link_class do |page|
+								<!-- <%= link_to_function child.name, :url => category_project_path(child,first_project), :class => link_class do |page|
 										# page.select("#portfolio-industry-menu .project-list").each do |item| item.hide end
 										# page.visual_effect(:toggle_blind, "project_list#{child.id}")
-										page.call 'set_current_category', child.id, project_path(first_project)
-									end %>
+										page.call 'set_current_category', child.id, category_project_path(child,first_project)
+									end %> -->
+								<%= link_to child.name, category_path(child), :class => link_class %>
 								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
 							<% else %>
 								<%= link_to child.name, {}, {:href => "#"} %>

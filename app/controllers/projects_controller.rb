@@ -28,6 +28,11 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      session[:current_category] = @category.id
+    end
+    
     unless session[:current_category]
       session[:current_category] = @project.categories.first.id
     else

@@ -1,7 +1,7 @@
 <%= render :partial => "common/clientlogin" %>
 
-<% if params[:controller] == "projects" && @current_category.fyi %>
-	<%= render :partial => "projects/fyi", :locals => { :current_category => @current_category } %>
+<% if params[:controller] == "projects" && @category.fyi %>
+	<%= render :partial => "projects/fyi" %>
 <% else %>
 	<%= get_blog_posts %>
 <% end %>

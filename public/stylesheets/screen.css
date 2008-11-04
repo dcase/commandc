@@ -95,9 +95,9 @@ img#logo {
 	float: left;
 	margin-top: 5px;
 }
-p#seo {
+h1#seo {
 	font-size: 10px;
-	color: #ccc;
+	color: #999;
 	margin: 0 0 10px 0;
 }
 p#tagline {

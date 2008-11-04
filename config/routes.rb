@@ -4,23 +4,23 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   
-  map.portfolio '/custom-website-design.html', :controller => 'projects', :action => 'show', :id => Category.roots.first.children.first.projects.first.id
+  #map.portfolio '/custom-website-design.html', :controller => 'projects', :action => 'show', :id => Category.roots.first.children.first.projects.first.id
   
   map.resources :users
 
   map.resource :session
 
-  map.resources :tabs
+  map.resources :tabs 
 
-  map.resources :projects
+  map.resources :inquiries, :as => 'contact-us.html'
 
-  map.resources :inquiries
+  map.resources :reviews, :as => 'client-reviews.html'
 
-  map.resources :reviews
-
-  map.resources :clients
+  map.resources :clients, :as => 'clients-list.html'
   
-  map.resources :categories, :collection => { :edit_all => :get }
+  map.resources :categories, :collection => { :edit_all => :get } do |category|
+    category.resources :projects, :as => 'portfolio'
+  end
   
   map.resources :portfolio_menu_items
 
@@ -58,8 +58,8 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "static", :action => "home"
   map.with_options :controller => 'static' do |static|
-    static.about 'about', :action => 'about'
-    static.home 'home', :action => 'home'
+    static.about 'who-we-are.html', :action => 'about'
+    static.home 'home.html', :action => 'home'
   end
   # See how all your routes lay out with "rake routes"
 
@@ -68,4 +68,6 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  map.connent '*path', :controller => 'static', :action => 'unrecognized'
+
 end

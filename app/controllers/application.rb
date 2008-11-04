@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   def find_first_project
-    @first_project = Category.roots.first.children.first.projects.first
+    @first_category = Category.roots.first.children.first
+    @first_project = @first_category.projects.first
   end
   
   private

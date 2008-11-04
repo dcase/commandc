@@ -1,27 +1,24 @@
 <% # Begin Config section %>
-<% content_for :title do %>COMMAND C<% end %>
+<% content_for :title do %>
+	Custom Web Site Design, Custom Magento Ecommerce, SEO Services, Graphic Design Services
+<% end %>
+<% content_for :meta_tags do %>
+	<meta name="description" content="High quality custom web site design services, graphic design services, and SEO services at affordable prices.  Command C offers unique web site design appeal. Williamsburg, Brooklyn, NY, New York" />
+	<meta name="keywords" content="custom magento ecommerce, custom web site design, custom web site design services, custom website design, custom website design services, affordable website design, website design, web site design, seo services, professional website design, professional web site design, ecommerce website design, ecommerce web site design, graphic design services, logo design, command c, commandc, ny, new york, williamsburg, brooklyn" />
+<% end %>
 <% content_for :bodyclass do %>home<% end %>
 <% # End Config section %>
 
 <div class="copy">
 	<p><span class="bold red">COMMAND C</span> will manage your 
-	<strong>
-	website design, 
-	ecommerce,
-	branding + identity, 
-	search engine optimization (SEO), 
-	internet marketing, 
-	commercial photography,
-	</strong> and <strong>
-	website maintenance
-	</strong> needs 
+	<%= Category.get(1).children.collect{|c| '<strong>'+link_to( c.name, category_path(c))+'</strong>' }.to_sentence %> needs 
 	with customer service so personalized, 
 	it will make all of<br />the other relationships 
 	in your life seem lacking.<br />Don&#x27;t blame 
 	us for the ensuing couple&#x27;s therapy,<br />
 	we can't help it if you fall in love…</p>
 </div>
-<%= link_to image_tag( 'goodstuff.gif', :size => "389x50", :alt => "the good stuff", :mouseover => 'goodstuff_ro.gif'), project_path(@first_project) %>
+<%= link_to image_tag( 'goodstuff.gif', :size => "389x50", :alt => "the good stuff", :mouseover => 'goodstuff_ro.gif'), category_project_path(@first_category,@first_project) %>
 
 <% content_for :sidebar do %>
 	<% if @recent_projects %>
@@ -29,10 +26,10 @@
 			<div class="larger bold">recent projects:</div>
 			<% for project in @recent_projects %>
 				<% div_for project, :class => "recent-project" do %>
-					<% project_category_id = project.categories.first.id %>
-					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb)), project_path(project) %>
+					<% project_category = project.categories.first %>
+					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb)), category_project_path(project_category, project) %>
 					<div class="small">
-						>> <%= link_to project.name, project_path(project) %>
+						>> <%= link_to project.name, category_project_path(project_category, project) %>
 					</div>
 				<% end %>
 			<% end %>

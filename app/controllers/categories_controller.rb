@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   layout :http_or_xhr
-  before_filter :permission
+  before_filter :permission, :except => :show
   
   def update_positions
     Category.update_positions(params)
@@ -25,9 +25,13 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.find(params[:id])
-
+    session[:current_category] = @category.id
+    unless @project = @category.projects.first
+      @project = @category.siblings.first.projects.first
+    end
+    
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :template => 'projects/show' }# show.html.erb
       format.xml  { render :xml => @category }
     end
   end

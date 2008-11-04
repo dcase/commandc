@@ -3,8 +3,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title><%= yield :title %></title>
+	<%= yield :meta_tags %>
+	<meta name="distribution" content="global" />
+	<meta name="copyright" content="2001-2008 Command C custom web site design services. Sara Heart Bacon. All rights reserved." />
+	<meta name="author" content="Command C, Custom Web Site Design, Website Design" />
+	<meta name="robots" content="index,follow" />
+	<meta name="revisit" content="10 days" />
 	<%= stylesheet_link_tag 'screen' %>
 	<!--[if lte IE 6]>
 		<%= stylesheet_link_tag 'ie6' %>
@@ -20,7 +26,7 @@
 	<div id="container">
 		<div id="header">
 			<%= link_to image_tag( 'logo.png', :size => "191x45", :id => "logo", :alt => "COMMAND C logo" ), home_path %>
-			<p id="seo">Custom Web Site Design, SEO Services, Graphic Design Services, Product Photography</p>
+			<h1 id="seo">Custom Web Site Design, SEO Services, Graphic Design Services, Product Photography</h1>
 			<p id="tagline">we rock solid fundamentals<br />and sport cutting edge design</p>
 		</div><!-- end DIV 'header' -->
 		<div id="main">

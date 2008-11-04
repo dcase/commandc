@@ -5,5 +5,8 @@ class StaticController < ApplicationController
 
   def about
   end
+  
+  def unrecognized
+  end
 
 end

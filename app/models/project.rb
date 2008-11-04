@@ -9,4 +9,7 @@ class Project < ActiveRecord::Base
     :if => Proc.new { |p| p.is_recent == true },
     :message => ": recent projects need a thumbnail"
     
+  def to_param
+    "#{id}-#{name.downcase.strip.gsub(/\ /, '-').gsub(/[^\w\-]/, '').gsub(/[-]+/, '-')}.html"
+  end
 end
