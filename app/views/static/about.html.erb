@@ -11,7 +11,7 @@
 
 <%= image_tag 'the-scoop.gif', :id => "the_scoop", :size => "300x63", :alt => "the scoop" %>
 <div class="copy">
-	<p class="top"><span class="bold red">COMMAND C</span> design, LLC is a comprehensive creative <br />services firm, bringing accessible marketing solutions <br />that fuse your business mission with cutting edge design. <br />We will manage your 
+	<p class="top"><span class="bold red">COMMAND C</span> design, LLC is a comprehensive creative services firm, bringing accessible marketing solutions that fuse your business mission with cutting edge design. We will manage your 
 	<%= categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage }
 		categories_list.collect{|c|
 			if c.show_on_homepage

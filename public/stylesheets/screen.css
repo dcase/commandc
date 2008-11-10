@@ -126,6 +126,7 @@ img#portfolio_link {
 	position: absolute;
 	top: 5px;
 	right: 4px;
+	z-index: 9;
 }
 img.submenu-heading {
 	position: absolute;
