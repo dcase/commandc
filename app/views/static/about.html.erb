@@ -11,7 +11,13 @@
 
 <%= image_tag 'the-scoop.gif', :id => "the_scoop", :size => "300x63", :alt => "the scoop" %>
 <div class="copy">
-	<p class="top"><span class="bold red">COMMAND C</span>design, LLC is a comprehensive creative <br />services firm, bringing accessible marketing solutions <br />that fuse your business mission with cutting edge design. <br />We will manage your <strong>website design, ecommerce, <br />branding + identity, search engine optimization (SEO), <br />internet marketing, commercial photography, hosting <br /></strong> and <strong>website maintenance</strong>.</p>
+	<p class="top"><span class="bold red">COMMAND C</span> design, LLC is a comprehensive creative <br />services firm, bringing accessible marketing solutions <br />that fuse your business mission with cutting edge design. <br />We will manage your 
+	<%= categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage }
+		categories_list.collect{|c|
+			if c.show_on_homepage
+				'<strong>'+link_to( c.name, category_path(c))+'</strong>'
+			end
+		 }.to_sentence %>.</p>
 	<p>Our mission is to produce unique designs with a quality you <br />can quantify. In a world of constant change and challenge, <br /><span class="bold red">COMMAND C&rsquo;s</span> vision remains clear and focused:</p>
 	<p class="bold">To provide our clients with exceptional design and <br />development services both today and tomorrow.</p>
 </div>

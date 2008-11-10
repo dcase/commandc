@@ -11,7 +11,12 @@
 
 <div class="copy">
 	<p><span class="bold red">COMMAND C</span> will manage your 
-	<%= Category.get(1).children.collect{|c| '<strong>'+link_to( c.name, category_path(c))+'</strong>' }.to_sentence %> needs 
+	<%= categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage }
+		categories_list.collect{|c|
+			if c.show_on_homepage
+				'<strong>'+link_to( c.name, category_path(c))+'</strong>'
+			end
+		 }.to_sentence %> needs 
 	with customer service so personalized, 
 	it will make all of<br />the other relationships 
 	in your life seem lacking.<br />Don&#x27;t blame 

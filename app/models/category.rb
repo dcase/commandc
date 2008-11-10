@@ -8,4 +8,5 @@ class Category < ActiveRecord::Base
   def to_param
     "#{id}-#{name.downcase.strip.gsub(/\ /, '-').gsub(/[^\w\-]/, '').gsub(/[-]+/, '-')}"
   end
+  
 end

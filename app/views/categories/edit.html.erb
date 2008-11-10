@@ -16,6 +16,10 @@
     <%= f.text_area :fyi, :rows => 4 %>
   </p>
   <p>
+    <%= f.label "Show on homepage?" %><br />
+    <%= f.check_box :show_on_homepage %>
+  </p>
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
