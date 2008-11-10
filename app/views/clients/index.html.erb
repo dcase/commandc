@@ -14,7 +14,7 @@
 
 <% for client in @featured_clients %>
 	<% div_for(client, :class => cycle('top-left', 'top-middle', 'top-right', 'bottom-left', 'bottom-middle', 'bottom-right')) do %>
-		<%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url %>
+		&nbsp;<%= link_to image_tag(client.imagefile.public_filename(:client_logo)), client.url %>
 		<div class="small">>> <a href="<%=h client.url %>"><%=h client.name %></a></div>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>

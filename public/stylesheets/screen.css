@@ -587,6 +587,10 @@ div.client {
 	position: relative;
 	height: 100px;
 	text-align: center;
+	font-size: 60px;
+}
+div.client img {
+	margin-left: -0.3em;
 }
 div.client div {
 	position: absolute;
