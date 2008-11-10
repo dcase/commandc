@@ -22,6 +22,8 @@ ActionController::Routing::Routes.draw do |map|
     category.resources :projects, :as => 'portfolio'
   end
   
+  map.resources :projects
+  
   map.resources :portfolio_menu_items
 
   # The priority is based upon order of creation: first created -> highest priority.

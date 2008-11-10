@@ -1,6 +1,6 @@
 <%= render :partial => "common/clientlogin" %>
 
-<% if params[:controller] == "projects" && @category.fyi %>
+<% if params[:controller] == "projects" && params[:action] == "show" && @category.fyi %>
 	<%= render :partial => "projects/fyi" %>
 <% else %>
 	<%= get_blog_posts %>

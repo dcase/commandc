@@ -31,10 +31,13 @@ class ProjectsController < ApplicationController
     if params[:category_id]
       @category = Category.find(params[:category_id])
       session[:current_category] = @category.id
+    else
+      @category = @project.categories.first 
     end
     
+    
     unless session[:current_category]
-      session[:current_category] = @project.categories.first.id
+      session[:current_category] = @category.id
     else
       project_categories = @project.categories.collect{|cat| cat.id}
       unless project_categories.include? session[:current_category].to_i
@@ -51,6 +54,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+  end
+  
+  # GET /projects/new
+  # GET /projects/new.xml
+  def new
+    @project = Project.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @project }
+    end
   end
 
   # POST /projects
