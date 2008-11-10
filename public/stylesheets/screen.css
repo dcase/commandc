@@ -86,6 +86,10 @@ div#admin-controls div {
 	float: left;
 	padding: 5px;
 }
+div#copyright {
+	font-size: 10px;
+	color: #999;
+}
 
 /***************
 * Common elements
