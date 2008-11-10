@@ -19,6 +19,23 @@
     <%= f.label "Show on homepage?" %><br />
     <%= f.check_box :show_on_homepage %>
   </p>
+  <h2 class="bold">SEO</h2>
+  <p>
+    <%= f.label 'Page Title' %><br />
+    <%= f.text_field :seo_title %>
+  </p>
+  <p>
+    <%= f.label 'Keywords' %><br />
+    <%= f.text_field :seo_keywords %>
+  </p>
+  <p>
+    <%= f.label 'H1 text' %><br />
+    <%= f.text_field :seo_h1 %>
+  </p>
+  <p>
+    <%= f.label "Description" %><br />
+    <%= f.text_area :seo_description, :rows => 4 %>
+  </p>
   <p>
     <%= f.submit "Update" %>
   </p>

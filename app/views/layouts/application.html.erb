@@ -26,7 +26,7 @@
 	<div id="container">
 		<div id="header">
 			<%= link_to image_tag( 'logo.png', :size => "191x45", :id => "logo", :alt => "COMMAND C logo" ), home_path %>
-			<h1 id="seo">Custom Web Site Design, SEO Services, Graphic Design Services, Product Photography</h1>
+			<h1 id="seo"><%= @category.seo_h1 rescue "Custom Web Site Design, SEO Services, Graphic Design Services, Product Photography" %></h1>
 			<p id="tagline">we rock solid fundamentals<br />and sport cutting edge design</p>
 		</div><!-- end DIV 'header' -->
 		<div id="main">
@@ -67,7 +67,7 @@
 		</div>
 		<div>
 		<%= image_tag("add.png", :size => "16x16") %>
-		<%= link_to_show_overlay("add new category", new_category_path) %>
+		<%= link_to("add new category", new_category_path) %>
 		</div>
 		<div>
 		<%= image_tag("pencil.png", :size => "16x16")%>

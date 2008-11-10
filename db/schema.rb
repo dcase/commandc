@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081110162257) do
+ActiveRecord::Schema.define(:version => 20081110170843) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(:version => 20081110162257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "show_on_homepage",  :default => true
+    t.string   "seo_title"
+    t.text     "seo_description"
+    t.string   "seo_keywords"
+    t.string   "seo_h1"
   end
 
   create_table "clients", :force => true do |t|

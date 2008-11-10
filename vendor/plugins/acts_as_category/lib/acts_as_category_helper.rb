@@ -30,7 +30,7 @@ module ActsAsCategoryHelper
     result += "<ul id=\"sortable_categories_#{parent_id}\">\n" if firstitem
     result += "<li id=\"category_#{category.id}\">#{category.read_attribute(column)}"
     if authorized?
-			result += link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_category_path(category), {:title => "Edit"})
+			result += link_to( image_tag("pencil.png", :size => "16x16"), edit_category_path(category), {:title => "Edit"})
 			result += link_to( image_tag("fail.png", :size => "16x16"), category, {:confirm => 'Are you sure?', :method => :delete, :title => "Delete"})
 		end
     result += category.children.empty? ? "</li>\n" : "\n"
