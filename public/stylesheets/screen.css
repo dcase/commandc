@@ -591,7 +591,7 @@ div.client {
 div.client div {
 	position: absolute;
 	right: 0;
-	bottom: 20px;
+	bottom: 15px;
 }
 
 .clients #content .top-left div,
@@ -605,34 +605,34 @@ div.client div {
 	width: 210px;
 }
 .clients #content .top-left {
-	padding: 15px 0 20px 0;
+	padding: 15px 0 15px 0;
 	width: 160px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-middle {
-	padding: 15px 0 20px 0;
+	padding: 15px 0 15px 0;
 	width: 210px;
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .clients #content .top-right {
-	padding: 15px 0 20px 0;
+	padding: 15px 0 15px 0;
 	width: 160px;
 	border-bottom: 1px solid #ccc;
 }
 .clients #content .bottom-left {
-	padding: 20px 0 15px 0;
+	padding: 15px 0 15px 0;
 	width: 160px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-middle {
-	padding: 20px 0 15px 0;
+	padding: 15px 0 15px 0;
 	width: 210px;
 	border-right: 1px solid #ccc;
 }
 .clients #content .bottom-right {
-	padding: 20px 0 15px 0;
+	padding: 15px 0 15px 0;
 	width: 160px;
 }
 .sidebar-list-heading {
