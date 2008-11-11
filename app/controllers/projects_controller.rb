@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if params[:imagefile][:uploaded_data].size > 0
-      @project.imagefile.destroy
+      @project.imagefile.destroy if @project.imagefile
       @project.create_imagefile(params[:imagefile])
     end
     @project.categories = Category.find(params[:categories]) if params[:categories]

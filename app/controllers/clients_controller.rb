@@ -67,7 +67,7 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     if params[:imagefile][:uploaded_data].size > 0
-      @client.imagefile.destroy
+      @client.imagefile.destroy if @client.imagefile
       @client.create_imagefile(params[:imagefile])
     end
 

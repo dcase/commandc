@@ -74,7 +74,7 @@ class TabsController < ApplicationController
   def update
     @tab = Tab.find(params[:id])
     if params[:imagefile][:uploaded_data].size > 0
-      @tab.imagefile.destroy
+      @tab.imagefile.destroy if @tab.imagefile
       @tab.create_imagefile(params[:imagefile])
     end
 
