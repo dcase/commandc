@@ -10,6 +10,6 @@ class Project < ActiveRecord::Base
     :message => ": recent projects need a thumbnail"
     
   def to_param
-    "#{id}-#{name.downcase.strip.gsub(/\ /, '-').gsub(/[^\w\-]/, '').gsub(/[-]+/, '-')}.html"
+    "#{id}-#{name.downcase.strip.gsub(/\ /, '-').gsub(/[^\w\-]/, '').gsub(/[-]+/, '-')}"
   end
 end
