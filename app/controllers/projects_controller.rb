@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   layout :http_or_xhr
-  before_filter :permission, :except => [:list_by_category, :show]
+  before_filter :permission, :except => [:list_by_category, :show, :show_first]
   before_filter :get_current_category
   
   # GET /projects
@@ -47,6 +47,27 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.xml  { render :xml => @project }
+    end
+  end
+  
+  # GET /projects/1
+  # GET /projects/1.xml
+  def show_first
+    @category = Category.roots.first.children.first
+    @project = @category.projects.first
+    
+    unless session[:current_category]
+      session[:current_category] = @category.id
+    else
+      project_categories = @project.categories.collect{|cat| cat.id}
+      unless project_categories.include? session[:current_category].to_i
+        session[:current_category] = project_categories.first
+      end
+    end
+
+    respond_to do |format|
+      format.html { render :template => "projects/show"} # show.html.erb
       format.xml  { render :xml => @project }
     end
   end

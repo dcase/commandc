@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   
-  map.portfolio '/custom-website-design.html', :controller => 'projects', :action => 'show', :id => Category.roots.first.children.first.projects.first.id, :category_id => Category.roots.first.children.first.id
+  map.portfolio '/custom-website-design.html', :controller => 'projects', :action => 'show_first'
   
   map.resources :users
 
@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
     category.resources :projects, :as => 'portfolio'
   end
   
-  map.resources :projects
+  map.resources :projects, :collection => { :show_first => :get }
   
   map.resources :portfolio_menu_items
 
