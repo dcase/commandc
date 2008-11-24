@@ -26,8 +26,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     session[:current_category] = @category.id
-    unless @project = @category.projects.first
-      @project = @category.siblings.first.projects.first
+    unless @project = @category.portfolio_menu_items.first.project
+      @project = @category.siblings.first.portfolio_menu_items.first.project
     end
     
     respond_to do |format|

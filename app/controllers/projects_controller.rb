@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show_first
     @category = Category.roots.first.children.first
-    @project = @category.projects.first
+    @project = @category.portfolio_menu_items.first.project
     
     unless session[:current_category]
       session[:current_category] = @category.id
