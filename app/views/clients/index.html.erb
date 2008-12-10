@@ -29,9 +29,13 @@
 	<% if authorized? %>
 		<div><%= link_to_function "show all" do |page| 
 					page[:scroll].set_style({:overflow => 'visible'}) 
+					page['contact-us-button'].toggle
+					page['contact-us-rabbit'].toggle
 				end %> | 
 			<%= link_to_function "hide overflow" do |page| 
-						page[:scroll].set_style({:overflow => 'hidden'}) 
+						page[:scroll].set_style({:overflow => 'hidden'})
+						page['contact-us-button'].toggle
+						page['contact-us-rabbit'].toggle
 					end %>
 		</div>
 	<% end %>
