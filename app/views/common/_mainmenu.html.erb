@@ -1,6 +1,6 @@
 <ul class="mainmenu">
 	<li>
-		<% unless params[:controller] == "projects" %>
+		<% unless params[:controller] == "projects" || params[:controller] == "categories"  %>
 			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), portfolio_path %>
 		<% else %>
 			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "46x13", :alt => "our work") %>
