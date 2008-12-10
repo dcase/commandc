@@ -651,14 +651,15 @@ div.client div {
 .sidebar-list li {
 	list-style: none;
 	font-size: 11px;
+	margin: 2px 0;
 }
 .clients div#scroll {
-	height: 270px;
+	height: 305px;
 	overflow: auto;
 }
 .clients div#scroll_buttons {
 	position: absolute;
-	top: 345px;
+	top: 390px;
 	right: 20px;
 	left: auto;
 }
@@ -690,7 +691,7 @@ div.review {
 }
 .reviews div#scroll_buttons {
 	position: absolute;
-	top: 365px;
+	top: 410px;
 	right: 50px;
 	left: auto;
 }
@@ -698,7 +699,7 @@ div.review {
 div#reviews_accordion {
 	overflow: auto;
 	width: 485px;
-	height: 325px;
+	height: 320px;
 	position: relative;
 	margin-top: 90px;
 }
@@ -715,7 +716,7 @@ div#reviews_accordion .accordion_toggle_active {
 
 .projects div#content {
 	margin: 0 163px 0 273px;
-	padding-top: 80px;
+	padding-top: 65px;
 }
 .projects .submenu-heading {
 	top: 20px;
@@ -731,7 +732,7 @@ div#reviews_accordion .accordion_toggle_active {
 	padding-right: 0;
 }
 div#tab_list {
-	margin-top: 120px;
+	margin-top: 90px;
 }
 div#tab_list .accordion_toggle,
 div#tab_list .accordion_toggle_active {
@@ -755,6 +756,7 @@ div#tab_list .accordion_toggle_active a {
 }
 div#tab_image_wrapper {
 	width: 450px;
+	min-height: 300px;
 }
 div#tab_image_links {
 	text-align: right;
@@ -878,10 +880,11 @@ div#inquire_caption {
 }
 #fyi_wrapper img {
 	float: left;
+	margin-left: 87px;
 }
 #fyi {
 	float: left;
-	width: 130px;
+	width: 360px;
 	font-size: 10px;
 	padding: 7px 0 0 5px;
 }

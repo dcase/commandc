@@ -20,7 +20,7 @@
 		<% unless @project.tabs.count < 2 %>
 			<div id="tab_image_links">
 				<% if @project.url %>
-					<div id="project_url"><%= link_to @project.url, @project.url, :target => "_blank" %></div>
+					<div id="project_url"><%= link_to @project.url.split("://")[1], @project.url, :target => "_blank" %></div>
 				<% end %>
 				<% @project.tabs.each_with_index do |tab, i| %>
 					<% if i==0 then link_class = "active" else link_class = "inactive" end %>
