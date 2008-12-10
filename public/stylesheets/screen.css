@@ -756,6 +756,8 @@ div#tab_list .accordion_toggle_active a {
 }
 div#tab_image_wrapper {
 	width: 450px;
+}
+div#tab_image {
 	min-height: 300px;
 }
 div#tab_image_links {
