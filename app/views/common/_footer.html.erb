@@ -6,8 +6,8 @@
 	<%= get_blog_posts %>
 <% end %>
 
-<%= link_to_unless_current image_tag('contact-button.gif', :mouseover => 'contact-button_ro.gif', :size => "84x29", :id => "contact-us-button"), new_inquiry_path %>
+<%= link_to_unless_current image_tag('contact-button.gif', :mouseover => 'contact-button_ro.gif', :size => "84x29", :id => "contact-us-button", :alt => "Custom Web Site Design: Contact Us"), new_inquiry_path %>
 
 <% unless current_page?( :controller => "static", :action => "about") %>
-	<%= link_to_unless_current image_tag('contact-us-rabbit.png', :size => "45x125", :id => "contact-us-rabbit"), new_inquiry_path %>
+	<%= link_to_unless_current image_tag('contact-us-rabbit.png', :size => "45x125", :id => "contact-us-rabbit", :alt => "Custom Web Site Design: Contact Us"), new_inquiry_path %>
 <% end %>

@@ -1,21 +1,20 @@
 <% # Begin Config section %>
 <% content_for :title do %>
-	Custom Web Site Design, Professional Web site Design, Ecommerce Web site Design, SEO Services
+	<%= render :partial => "common/default_title" %>
 <% end %>
 <% content_for :meta_tags do %>
-	<meta name="description" content="High quality custom web site design, professional web site design, ecommerce web site design, & SEO services at affordable prices.  Command C offers unique custom website design appeal. Williamsburg, Brooklyn, NY, New York">
-	<meta name="keywords" content="custom magento ecommerce, custom web site design, custom web site design services, custom website design, custom website design services, web site design, website design, professional web site design,  ecommerce web site design, ecommerce website design, affordable website design, professional website design, professional web site design, seo, seo services, search engine optimization, search engine optimisation, command c, commandc, ny, new york, williamsburg, brooklyn">
+	<%= render :partial => "common/default_seo" %>
 <% end %>
 <% content_for :bodyclass do %>about<% end %>
 <% # End Config section %>
 
-<%= image_tag 'the-scoop.gif', :id => "the_scoop", :size => "300x63", :alt => "the scoop" %>
+<%= image_tag 'the-scoop.gif', :id => "the_scoop", :size => "300x63", :alt => "custom web site design: the scoop" %>
 <div class="copy">
 	<p class="top"><span class="bold red">COMMAND C</span> design, LLC is a comprehensive creative services firm, bringing accessible marketing solutions that fuse your business mission with cutting edge design. We will manage your 
 	<%= categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage }
 		categories_list.collect{|c|
 			if c.show_on_homepage
-				'<strong>'+link_to( c.name, category_path(c))+'</strong>'
+				'<strong>'+link_to( c.name, category_path(c), :title => c.name)+'</strong>'
 			end
 		 }.to_sentence %>.</p>
 	<p>Our mission is to produce unique designs with a quality you <br />can quantify. In a world of constant change and challenge, <br /><span class="bold red">COMMAND C&rsquo;s</span> vision remains clear and focused:</p>
@@ -23,5 +22,5 @@
 </div>
 <% content_for :sidebar do %>
 	<%= render :partial => "common/portfoliolink" %>
-	<%= image_tag "big-slim-with-text.gif", :size => "239x366", :id => "about-rabbit", :alt => "This is Slim. Slim works for us, mostly holding signs and stuff" %>
+	<%= image_tag "big-slim-with-text.gif", :size => "239x366", :id => "about-rabbit", :alt => "custom web site design: This is Slim. Slim works for us, mostly holding signs and stuff" %>
 <% end %>

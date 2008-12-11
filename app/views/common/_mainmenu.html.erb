@@ -1,28 +1,28 @@
 <ul class="mainmenu">
 	<li>
 		<% unless params[:controller] == "projects" || params[:controller] == "categories"  %>
-			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "our work", :mouseover => 'mainmenu/portfolio_ro.gif'), portfolio_path %>
+			<%= link_to image_tag('mainmenu/portfolio.gif', :size => "46x13", :alt => "custom web site design: our work", :mouseover => 'mainmenu/portfolio_ro.gif'), portfolio_path, :title => "our work" %>
 		<% else %>
-			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "46x13", :alt => "our work") %>
+			<%= image_tag('mainmenu/portfolio_ro.gif', :size => "46x13", :alt => "custom web site design: our work") %>
 		<% end %></li>
 	<li>
 		<% unless current_page? :controller => 'static', :action => 'about' %>
-			<%= link_to image_tag('mainmenu/about.gif', :size => "59x13", :alt => "who we are", :mouseover => 'mainmenu/about_ro.gif'), { :controller => "static", :action => "about" } %>
+			<%= link_to image_tag('mainmenu/about.gif', :size => "59x13", :alt => "custom web site design: who we are", :mouseover => 'mainmenu/about_ro.gif'), { :controller => "static", :action => "about" }, :title => "who we are" %>
 		<% else %>
-			<%= image_tag('mainmenu/about_ro.gif', :size => "59x13", :alt => "who we are" ) %>
+			<%= image_tag('mainmenu/about_ro.gif', :size => "59x13", :alt => "custom web site design: who we are" ) %>
 		<% end %></li>
 	<li>
 		<% unless params[:controller] == 'clients' || params[:controller] == 'reviews' %>
-			<%= link_to image_tag('mainmenu/clients.gif', :size => "53x13", :alt => "our clients", :mouseover => 'mainmenu/clients_ro.gif'), clients_path %>
+			<%= link_to image_tag('mainmenu/clients.gif', :size => "53x13", :alt => "custom web site design: our clients", :mouseover => 'mainmenu/clients_ro.gif'), clients_path, :title => "our clients" %>
 		<% else %>
-			<%= image_tag('mainmenu/clients_ro.gif', :size => "53x13", :alt => "our clients") %>
+			<%= image_tag('mainmenu/clients_ro.gif', :size => "53x13", :alt => "custom web site design: our clients") %>
 		<% end %></li>
-	<li><%= link_to image_tag('mainmenu/blog.gif', :size => "42x13", :alt => "our blog", :mouseover => 'mainmenu/blog_ro.gif'), {}, { :href => "http://commandc.com/blog1", :target => "_blank"} %></li>
+	<li><%= link_to image_tag('mainmenu/blog.gif', :size => "42x13", :alt => "custom web site design: our blog", :mouseover => 'mainmenu/blog_ro.gif'), {}, { :href => "http://commandc.com/blog1", :target => "_blank", :title => "our blog"} %></li>
 	<li>
 		<% unless params[:controller] == 'inquiries' %>
-			<%= link_to image_tag('mainmenu/contact.gif', :size => "53x13", :alt => "contact us", :mouseover => 'mainmenu/contact_ro.gif'), new_inquiry_path %>
+			<%= link_to image_tag('mainmenu/contact.gif', :size => "53x13", :alt => "custom web site design: contact us", :mouseover => 'mainmenu/contact_ro.gif'), new_inquiry_path, :title => "contact us" %>
 		<% else %>
-			<%= image_tag('mainmenu/contact_ro.gif', :size => "53x13", :alt => "contact us") %>
+			<%= image_tag('mainmenu/contact_ro.gif', :size => "53x13", :alt => "custom web site design: contact us") %>
 		<% end %></li>
 </ul>
 
@@ -32,19 +32,19 @@
 	<div id="submenu">
 	<% if current_page?( :controller => "clients", :action => "index") || current_page?( :controller => "reviews", :action => "index") %>
 		<% if params[:controller] == "clients" %>
-			<%= image_tag 'the-love.gif', :class => 'submenu-heading', :size => '235x50', :alt => 'the love' %>
+			<%= image_tag 'the-love.gif', :class => 'submenu-heading', :size => '235x50', :alt => 'custom web site design: the love' %>
 		<% else %>
-			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '299x63', :alt => 'ya heard?' %>
+			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '299x63', :alt => 'custom web site design: ya heard?' %>
 		<% end %>
 		<ul id="clients-menu" class="submenu" <% unless current_page?(clients_path) || current_page?(reviews_path) %>style="display: none;"<% end %>>
-			<li><%= link_to_active_if "client list", clients_path %></li>
-			<li><%= link_to_active_if "what they say", reviews_path %></li>
+			<li><%= link_to_active_if "client list", clients_path, :title => "client list" %></li>
+			<li><%= link_to_active_if "what they say", reviews_path, :title => "what they say" %></li>
 		</ul>
 	<% elsif params[:controller] == "projects" || params[:controller] == "categories" %>
-		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '237x50', :alt => 'the goods' %>
+		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '237x50', :alt => 'custom web site design: the goods' %>
 		<ul id="portfolio-menu" class="submenu">
 			<% if current_category?(1) then service_class = "current" else service_class = "notcurrent" end %>
-			<li><%= link_to_function "by service", :id => "service-link", :class => service_class do |page| 
+			<li><%= link_to_function "by service", :id => "service-link", :class => service_class, :title => "by service" do |page| 
 					page.visual_effect(:toggle_blind, "portfolio-service-menu", :duration => 0.5)
 					page['service-link'].addClassName('current')
 					page['industry-link'].removeClassName('current')
@@ -53,7 +53,7 @@
 				end %>
 			</li>
 			<% if current_category?(2) then industry_class = "current" else industry_class = "notcurrent" end %>
-			<li><%= link_to_function "by industry", :id => "industry-link", :class => industry_class do |page| 
+			<li><%= link_to_function "by industry", :id => "industry-link", :class => industry_class, :title => "by industry" do |page| 
 					page.visual_effect(:toggle_blind, "portfolio-industry-menu", :duration => 0.5)
 					page['service-link'].removeClassName('current')
 					page['industry-link'].addClassName('current')
@@ -80,10 +80,10 @@
 										# page.visual_effect(:toggle_blind, "project_list#{child.id}")
 										page.call 'set_current_category', child.id, category_project_path(child,first_project)
 									end %>-->
-								<%= link_to child.name, category_path(child), :class => link_class %>
+								<%= link_to child.name, category_path(child), :class => link_class, :title => child.name %>
 								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
 							<% else %>
-								<%= link_to child.name, {}, {:href => "#"} %>
+								<%= link_to child.name, {}, {:href => "#", :title => child.name} %>
 							<% end %>
 						</li>
 					<% end %>
@@ -106,10 +106,10 @@
 										# page.visual_effect(:toggle_blind, "project_list#{child.id}")
 										page.call 'set_current_category', child.id, category_project_path(child,first_project)
 									end %> -->
-								<%= link_to child.name, category_path(child), :class => link_class %>
+								<%= link_to child.name, category_path(child), :class => link_class, :title => child.name %>
 								<%= render :partial => "projects/list_by_category", :locals => { :child => child}  %>
 							<% else %>
-								<%= link_to child.name, {}, {:href => "#"} %>
+								<%= link_to child.name, {}, {:href => "#", :title => child.name} %>
 							<% end %>
 						</li>
 					<% end %>

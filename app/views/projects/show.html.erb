@@ -16,7 +16,7 @@
 	<p class="lightgray bold huge">add tabs</p>
 <% else %>
 	<div id="tab_image_wrapper">
-		<div id="tab_image"><%= image_tag @project.tabs.first.imagefile.public_filename %></div>
+		<div id="tab_image"><%= image_tag @project.tabs.first.imagefile.public_filename, :alt => "custom web site design: "+@project.name %></div>
 		<% unless @project.tabs.count < 2 %>
 			<div id="tab_image_links">
 				<% if @project.url %>

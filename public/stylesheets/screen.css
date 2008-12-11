@@ -690,10 +690,9 @@ div.review {
 	background: #fff;
 }
 .reviews div#scroll_buttons {
-	position: absolute;
-	top: 410px;
-	right: 50px;
-	left: auto;
+	position: relative;
+	top: -30px;
+	left: 495px;
 }
 
 div#reviews_accordion {

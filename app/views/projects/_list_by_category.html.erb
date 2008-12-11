@@ -5,7 +5,7 @@
 				<%= image_tag("drag_handle.png", :size => "16x16", :class => "drag_handle") %>
 			<% end %>
 			<% if @project == item.project then project_link_class = 'current' else project_link_class = 'notcurrent' end %>
-			<%= link_to item.project.name, category_project_path(child,item.project), :class => project_link_class %>
+			<%= link_to item.project.name, category_project_path(child,item.project), :class => project_link_class, :title => item.project.name %>
 		<% end %>
 	<% end%>
 </ul>
