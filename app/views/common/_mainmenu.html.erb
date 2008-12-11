@@ -17,7 +17,7 @@
 		<% else %>
 			<%= image_tag('mainmenu/clients_ro.gif', :size => "53x13", :alt => "custom web site design: our clients") %>
 		<% end %></li>
-	<li><%= link_to image_tag('mainmenu/blog.gif', :size => "42x13", :alt => "custom web site design: our blog", :mouseover => 'mainmenu/blog_ro.gif'), {}, { :href => "http://commandc.com/blog1", :target => "_blank", :title => "our blog"} %></li>
+	<li><%= link_to image_tag('mainmenu/blog.gif', :size => "42x13", :alt => "custom web site design: our blog", :mouseover => 'mainmenu/blog_ro.gif'), {}, { :href => "http://blog.commandc.com/", :target => "_blank", :title => "our blog"} %></li>
 	<li>
 		<% unless params[:controller] == 'inquiries' %>
 			<%= link_to image_tag('mainmenu/contact.gif', :size => "53x13", :alt => "custom web site design: contact us", :mouseover => 'mainmenu/contact_ro.gif'), new_inquiry_path, :title => "contact us" %>

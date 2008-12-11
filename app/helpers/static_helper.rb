@@ -4,7 +4,7 @@ module StaticHelper
     require 'open-uri'
     
     begin
-    feed = SimpleRSS.parse open( 'http://commandc.com/blog1/feed' )
+    feed = SimpleRSS.parse open( 'http://blog.commandc.com/feed' )
     
     output = "<div id=\"blog_posts\">"
     output += image_tag('blog-separator.gif', :size => "111x61")
