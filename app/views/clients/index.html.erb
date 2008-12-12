@@ -6,9 +6,6 @@
 	<%= render :partial => "common/default_seo" %>
 <% end %>
 <% content_for :bodyclass do %>clients<% end %>
-<% content_for :javascripts do %>
-	<%= javascript_include_tag 'class-scroll' %>
-<% end %>
 <% # End Config section %>
 
 <% for client in @featured_clients %>
