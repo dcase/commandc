@@ -5,12 +5,15 @@
 <% content_for :meta_tags do %>
 	<%= render :partial => "common/default_seo" %>
 <% end %>
+<% content_for :alt_prefix do %>
+	<%= render :partial => "common/default_alt_prefix" %>
+<% end %>
 <% content_for :bodyclass do %>clients<% end %>
 <% # End Config section %>
 
 <% for client in @featured_clients %>
 	<% div_for(client, :class => cycle('top-left', 'top-middle', 'top-right', 'bottom-left', 'bottom-middle', 'bottom-right')) do %>
-		&nbsp;<%= link_to image_tag(client.imagefile.public_filename(:client_logo), :class => 'small', :alt => "Custom Web Site Design: #{client.name}"), client.url, :target => "_blank", :title => client.name %>
+		&nbsp;<%= link_to image_tag(client.imagefile.public_filename(:client_logo), :class => 'small', :alt => yield(:alt_prefix) + client.name), client.url, :target => "_blank", :title => client.name %>
 		<div class="small">>> <a href="<%=h client.url %>" target="_blank" title="<%=h client.name %>"><%=h client.name %></a></div>
 		<% if authorized? %>
 			<%= link_to_show_overlay( image_tag("pencil.png", :size => "16x16"), edit_client_path(client), {:title => "Edit"}) %>

@@ -32,16 +32,16 @@
 	<div id="submenu">
 	<% if current_page?( :controller => "clients", :action => "index") || current_page?( :controller => "reviews", :action => "index") %>
 		<% if params[:controller] == "clients" %>
-			<%= image_tag 'the-love.gif', :class => 'submenu-heading', :size => '235x50', :alt => 'custom web site design: the love' %>
+			<%= image_tag 'the-love.gif', :class => 'submenu-heading', :size => '235x50', :alt => yield(:alt_prefix) + 'the love' %>
 		<% else %>
-			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '299x63', :alt => 'custom web site design: ya heard?' %>
+			<%= image_tag 'ya-heard.gif', :class => 'submenu-heading', :size => '299x63', :alt => yield(:alt_prefix) + 'ya heard?' %>
 		<% end %>
 		<ul id="clients-menu" class="submenu" <% unless current_page?(clients_path) || current_page?(reviews_path) %>style="display: none;"<% end %>>
 			<li><%= link_to_active_if "client list", clients_path, :title => "client list" %></li>
 			<li><%= link_to_active_if "what they say", reviews_path, :title => "what they say" %></li>
 		</ul>
 	<% elsif params[:controller] == "projects" || params[:controller] == "categories" %>
-		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '237x50', :alt => 'custom web site design: the goods' %>
+		<%= image_tag 'the-goods.gif', :class => 'submenu-heading', :size => '237x50', :alt => yield(:alt_prefix) + 'the goods' %>
 		<ul id="portfolio-menu" class="submenu">
 			<% if current_category?(1) then service_class = "current" else service_class = "notcurrent" end %>
 			<li><%= link_to_function "by service", :id => "service-link", :class => service_class, :title => "by service" do |page| 

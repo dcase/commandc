@@ -6,6 +6,9 @@
 <% content_for :meta_tags do %>
 	<%= render :partial => "common/default_seo" %>
 <% end %>
+<% content_for :alt_prefix do %>
+	<%= render :partial => "common/default_alt_prefix" %>
+<% end %>
 <% content_for :bodyclass do %>home<% end %>
 <% # End Config section %>
 
@@ -23,7 +26,7 @@
 	us for the ensuing couple&#x27;s therapy, 
 	we can't help it if you fall in love…</p>
 </div>
-<%= link_to image_tag( 'goodstuff.gif', :size => "389x50", :alt => "custom web site design: the good stuff", :mouseover => 'goodstuff_ro.gif'), portfolio_path, :title => "the good stuff" %>
+<%= link_to image_tag( 'goodstuff.gif', :size => "389x50", :alt => yield(:alt_prefix) + "the good stuff", :mouseover => 'goodstuff_ro.gif'), portfolio_path, :title => "the good stuff" %>
 
 <% content_for :sidebar do %>
 	<% if @recent_projects %>
@@ -32,7 +35,7 @@
 			<% for project in @recent_projects %>
 				<% div_for project, :class => "recent-project" do %>
 					<% project_category = project.categories.first %>
-					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb), :alt => "custom web site design: #{project.name}"), category_project_path(project_category, project), :title => project.name %>
+					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb), :alt => yield(:alt_prefix) + project.name), category_project_path(project_category, project), :title => project.name %>
 					<div class="small">
 						>> <%= link_to project.name, category_project_path(project_category, project), :title => project.name %>
 					</div>

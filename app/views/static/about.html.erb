@@ -5,6 +5,9 @@
 <% content_for :meta_tags do %>
 	<%= render :partial => "common/default_seo" %>
 <% end %>
+<% content_for :alt_prefix do %>
+	<%= render :partial => "common/default_alt_prefix" %>
+<% end %>
 <% content_for :bodyclass do %>about<% end %>
 <% # End Config section %>
 
@@ -22,5 +25,5 @@
 </div>
 <% content_for :sidebar do %>
 	<%= render :partial => "common/portfoliolink" %>
-	<%= image_tag "big-slim-with-text.gif", :size => "239x366", :id => "about-rabbit", :alt => "custom web site design: This is Slim. Slim works for us, mostly holding signs and stuff" %>
+	<%= image_tag "big-slim-with-text.gif", :size => "239x366", :id => "about-rabbit", :alt => yield(:alt_prefix) + "This is Slim. Slim works for us, mostly holding signs and stuff" %>
 <% end %>

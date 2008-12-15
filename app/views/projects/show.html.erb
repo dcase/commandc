@@ -6,6 +6,9 @@
 	<meta name="description" content="<%= @category.seo_description rescue "High quality custom web site design, professional web site design, ecommerce web site design, & SEO services at affordable prices.  Command C offers unique custom website design appeal. Williamsburg, Brooklyn, NY, New York" %>">
 	<meta name="keywords" content="<%= @category.seo_keywords rescue "custom magento ecommerce, custom web site design, custom web site design services, custom website design, custom website design services, web site design, website design, professional web site design,  ecommerce web site design, ecommerce website design, affordable website design, professional website design, professional web site design, seo, seo services, search engine optimization, search engine optimisation, command c, commandc, ny, new york, williamsburg, brooklyn" %>">
 <% end %>
+<% content_for :alt_prefix do %>
+	<%= if @category.seo_alt_prefix.blank? then render :partial => "common/default_alt_prefix" else @category.seo_alt_prefix end %>
+<% end %>
 <% content_for :bodyclass do %>projects<% end %>
 <% # End Config section %>
 
@@ -13,7 +16,7 @@
 	<p class="lightgray bold huge">add tabs</p>
 <% else %>
 	<div id="tab_image_wrapper">
-		<div id="tab_image"><%= image_tag @project.tabs.first.imagefile.public_filename, :alt => "custom web site design: "+@project.name %></div>
+		<div id="tab_image"><%= image_tag @project.tabs.first.imagefile.public_filename, :alt => yield(:alt_prefix) + @project.name %></div>
 		<% unless @project.tabs.count < 2 %>
 			<div id="tab_image_links">
 				<% if @project.url %>

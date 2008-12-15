@@ -2,7 +2,7 @@
 	<div class="tab-heading accordion_toggle">
 		<%= link_to_function tab.title do |page|
 			if @project.tabs.count > 1
-		 		page.replace_html('tab_image', image_tag(tab.imagefile.public_filename))
+		 		page.replace_html('tab_image', image_tag(tab.imagefile.public_filename, :alt => yield(:alt_prefix) + tab.title))
 				page.select('#tab_image_links a').each do |link| link.removeClassName('active') end
 				page["link#{i+1}"].addClassName('active')
 			end

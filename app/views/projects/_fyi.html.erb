@@ -1,5 +1,5 @@
 <div id="fyi_wrapper">
-	<%= image_tag 'fyi.gif', :size => "30x57", :alt => "custom web site design: F.Y.I." %>
+	<%= image_tag 'fyi.gif', :size => "30x57", :alt => yield(:alt_prefix) + "F.Y.I." %>
 	<div id="fyi">
 		<%=h @category.fyi || "blank" %>
 	</div>
