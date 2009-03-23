@@ -34,6 +34,9 @@
 			<div class="larger bold">recent projects:</div>
 			<% for project in @recent_projects %>
 				<% div_for project, :class => "recent-project" do %>
+					<% if authorized? %>
+						<%= image_tag('drag_handle.png', :size => '16x16', :alt => 'drag project', :class => 'recent_project_drag_handle' ) %>
+					<% end %>
 					<% project_category = project.categories.first %>
 					<%= link_to image_tag(project.imagefile.public_filename(:project_thumb), :alt => yield(:alt_prefix) + project.name), category_project_path(project_category, project), :title => project.name %>
 					<div class="small">
@@ -41,6 +44,7 @@
 					</div>
 				<% end %>
 			<% end %>
+			<%= sortable_element 'recent-projects', :url => { :controller=> "projects", :action => "order"}, :handle => "recent_project_drag_handle", :tag => "div", :only => "recent-project" if authorized? %>
 		</div>
 	<% end %>
 <% end %>

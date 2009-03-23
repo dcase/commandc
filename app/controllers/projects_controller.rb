@@ -150,4 +150,11 @@ class ProjectsController < ApplicationController
       @current_category = Category.roots.first.children.first
     end
   end
+  
+  def order
+     params['recent-projects'].each_with_index do |id, position|
+       Project.update(id, {:recent_position => position+1})
+     end
+     render :text => params.inspect
+   end
 end

@@ -550,6 +550,12 @@ a.red:active {
 	border: 1px solid #ccc;
 	margin-bottom: 5px;
 }
+.recent-project img.recent_project_drag_handle {
+	border: 0;
+	position: relative;
+	left: -18px;
+	margin-right: -16px;
+}
 
 /***************
 * Who We Are

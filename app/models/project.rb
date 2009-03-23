@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   has_many :categories, :through => :portfolio_menu_items
   has_many :tabs, :order => "position", :dependent => :destroy
   
+  acts_as_list :scope => "is_recent = 1", :column => :recent_position
+  
   validates_presence_of :name, :categories
   validates_presence_of :imagefile,
     :if => Proc.new { |p| p.is_recent == true },
