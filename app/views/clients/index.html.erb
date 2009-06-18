@@ -28,7 +28,7 @@
 </div>
 <% if authorized? %>
 	<%= sortable_element :featured_clients, :url => { :action => "order_featured" }, :tag => :div, :handle => "drag_handle", 
-	:onUpdate => "function() {
+	:onChange => "function() {
 		classes = ['top-left', 'top-middle', 'top-right', 'bottom-left', 'bottom-middle', 'bottom-right'];
 		i = 0;
 		$$('div.client').each( function(el) {
