@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @featured_clients = Client.find_all_by_is_featured(true)
+    @featured_clients = Client.find_all_by_is_featured(true, :order => :featured_position)
     @clients = Client.find(:all, :order => "position")
 
     respond_to do |format|
@@ -96,14 +96,21 @@ class ClientsController < ApplicationController
   end
   
   def order
-     params[:client_list].each_with_index do |id, position|
-       Client.update(id, {:position => position+1})
-     end
-     render :text => params.inspect
-   end
-
-   def inspect_params
+    params[:client_list].each_with_index do |id, position|
+     Client.update(id, {:position => position+1})
+    end
     render :text => params.inspect
-   end
+  end
+  
+  def order_featured
+    params[:featured_clients].each_with_index do |id, position|
+     Client.update(id, {:featured_position => position+1})
+    end
+    render :text => params.inspect
+  end
+
+  def inspect_params
+    render :text => params.inspect
+  end
 
 end

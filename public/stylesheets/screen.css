@@ -212,6 +212,7 @@ div#scroll_buttons img {
 	cursor: pointer;
 }
 
+
 /***************
 * Main Menu
 ****************/
@@ -603,6 +604,12 @@ div.client div {
 	position: absolute;
 	right: 0;
 	bottom: 15px;
+}
+div.client div.admin_controls {
+	position: absolute;
+	top: -30px;
+	left: -30px;
+	z-index: 99;
 }
 
 .clients #content .top-left div,
