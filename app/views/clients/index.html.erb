@@ -27,7 +27,17 @@
 	<% end %>
 </div>
 <% if authorized? %>
-	<%= sortable_element :featured_clients, :url => { :action => "order_featured" }, :tag => :div, :handle => "drag_handle" %>
+	<%= sortable_element :featured_clients, :url => { :action => "order_featured" }, :tag => :div, :handle => "drag_handle", 
+	:onUpdate => "function() {
+		classes = ['top-left', 'top-middle', 'top-right', 'bottom-left', 'bottom-middle', 'bottom-right'];
+		i = 0;
+		$$('div.client').each( function(el) {
+			el.writeAttribute('class','');
+			el.addClassName('client');
+			el.addClassName(classes[i]);
+			i++;
+		})
+	}" %>
 <% end %>
 
 <% content_for :sidebar do %>
