@@ -78,6 +78,7 @@ div#admin-controls {
 	border: 1px solid #ff0000;
 	text-align: left;
 	padding: 10px;
+	z-index: 9999;
 }
 div#admin-controls img {
 	vertical-align: bottom;
