@@ -13,11 +13,20 @@ module StaticHelper
       output = e
     end
     
+    begin
     twitter = Twitter::Base.new('info@commandc.com','commandc50').timeline(:user).first
     
     output += image_tag('twitter-separator.gif', :size => "94x61", :alt => "Twitter")
     output += "<div class=\"blog-post\">" + link_to(truncate(twitter.text, 75),{},:href => "http://twitter.com/commandc", :target => "_blank" ) + "</div>"
     output += "</div>"
+    
+    rescue
+    
+    output += image_tag('twitter-separator.gif', :size => "94x61", :alt => "Twitter")
+    output += "<div class=\"blog-post\">" + "Twitter is down!" + "</div>"
+    output += "</div>"
+      
+    end
     
     output
     
