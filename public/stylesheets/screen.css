@@ -542,6 +542,10 @@ a.red:active {
 	margin: 60px 0 0 0;
 	line-height: 22px;
 }
+.is_webkit .home .copy {
+	font-size: 1.35em;
+	width: 438px;
+}
 #recent-projects {
 	margin-top: 27px;
 }

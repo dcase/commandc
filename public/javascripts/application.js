@@ -17,3 +17,8 @@ function set_current_category(category_id, redirect) {
 	
 	new Ajax.Request('/portfolio_menu_items/set_current', options);
 }
+Event.observe(window, "load", function() {
+	if (Prototype.Browser.WebKit) {
+		$(document.body).addClassName("is_webkit");
+	}
+});
