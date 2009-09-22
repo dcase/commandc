@@ -542,7 +542,7 @@ a.red:active {
 	margin: 60px 0 0 0;
 	line-height: 22px;
 }
-.is_webkit .home .copy {
+.is_webkit .copy {
 	font-size: 1.35em;
 	width: 438px;
 }
