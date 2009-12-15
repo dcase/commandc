@@ -587,6 +587,12 @@ img#about-rabbit {
 	bottom: 0;
 	right: -10px;
 }
+ul#about-category-list li {
+	width: 300px;
+}
+ul#about-category-list a {
+	padding: 0;
+}
 ul#about-category-list a:link {
 	font-weight: bold;
 	font-size: 12px;
