@@ -27,9 +27,19 @@
 		<ul class="submenu">
 				<li class="overflow"><a class="current" href="javascript: void(0);">what we do</a>
 				<ul id="about-category-list" class="subsubmenu">
-					<% categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage } %>
-					<% categories_list.each do |category| %>
-						<li><%= link_to category.name, category, :title => category.name %></li>
+					<% category_list = { 
+						"1-custom website and development" => "3",
+						"2-consulting" => "3",
+						"3-content management systems" => "3",
+						"4-ecommerce solutions" => "4",
+						"5-custom designed blogs" => "3",
+						"6-print + logo design" => "6",
+						"7-branding + identity" => "5",
+						"8-search engine optimization (seo)" => "7",
+						"9-web hosting" => "3"
+						} 
+						category_list.sort.each do |k,v| %>
+					<li><%= link_to k[2,k.size], Category.find(v.to_i), :title => k[2,k.size] %></li>
 					<% end %>
 				</ul>
 				</li>
