@@ -579,11 +579,8 @@ img#the_scoop {
 }
 .about .copy {
 	font-size: 12px;
-	width: 325px;
-	line-height: 17px;
-}
-.about.is_webkit .copy {
 	width: 331px;
+	line-height: 17px;
 }
 img#about-rabbit {
 	position: absolute;
