@@ -587,6 +587,9 @@ img#about-rabbit {
 	bottom: 0;
 	right: -10px;
 }
+ul#about-category-list {
+	margin: 5px 0;
+}
 ul#about-category-list li {
 	width: 275px;
 }
