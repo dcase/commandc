@@ -25,13 +25,14 @@
 	<div id="submenu">
 		<%= image_tag 'the-scoop.gif', :class => "submenu-heading", :id => "the_scoop", :size => "300x63", :alt => "custom web site design: the scoop" %>
 		<ul class="submenu">
-				<li><a class="current" href="javascript: void(0);">what we do</a></li>
+				<li><a class="current" href="javascript: void(0);">what we do</a>
 				<ul id="about-category-list" class="subsubmenu">
 					<% categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage } %>
 					<% categories_list.each do |category| %>
 						<li><%= link_to category.name, category, :title => category.name %></li>
 					<% end %>
 				</ul>
+				</li>
 		</ul>
 	</div><!-- EOF DIV 'submenu' -->
 <% end %>	
