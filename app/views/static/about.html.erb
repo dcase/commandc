@@ -11,19 +11,27 @@
 <% content_for :bodyclass do %>about<% end %>
 <% # End Config section %>
 
-<%= image_tag 'the-scoop.gif', :id => "the_scoop", :size => "300x63", :alt => "custom web site design: the scoop" %>
+
 <div class="copy">
-	<p class="top"><span class="bold red">COMMAND C</span> design, LLC is a comprehensive creative services firm, bringing accessible marketing solutions that fuse your business mission with cutting edge design. We will manage your 
-	<%= categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage }
-		categories_list.collect{|c|
-			if c.show_on_homepage
-				'<strong>'+link_to( c.name, category_path(c), :title => c.name)+'</strong>'
-			end
-		 }.to_sentence %>.</p>
-	<p>Our mission is to produce unique designs with a quality you <br />can quantify. In a world of constant change and challenge, <br /><span class="bold red">COMMAND C&rsquo;s</span> vision remains clear and focused:</p>
-	<p class="bold">To provide our clients with exceptional design and <br />development services both today and tomorrow.</p>
+	<p class="top"><span class="bold red">COMMAND C</span> is a passionate, forward-thinking, boutique design firm specializing in creating highly customized solutions for the web. Our mission is to seamlessly integrate fundamental design strategy with cutting edge technology. We believe in face-to-face communication and an open and transparent working manner. </p>
+	<p><span class="bold red">COMMAND C</span> was founded in 2004 upon the concept that every project is unique and great projects deserve undivided, customized attention. Based on this notion, <span class="bold red">COMMAND C</span> was built to be form-fitting, assembling a team of specialists around what the project needs and deserves. We maintain this flexibility by keeping our firm small and only accepting a limited number of projects at a time.</p>
 </div>
 <% content_for :sidebar do %>
 	<%= render :partial => "common/portfoliolink" %>
 	<%= image_tag "big-slim-with-text.gif", :size => "239x366", :id => "about-rabbit", :alt => yield(:alt_prefix) + "This is Slim. Slim works for us, mostly holding signs and stuff" %>
 <% end %>
+
+<% content_for :submenu do %>
+	<div id="submenu">
+		<%= image_tag 'the-scoop.gif', :class => "submenu-heading", :id => "the_scoop", :size => "300x63", :alt => "custom web site design: the scoop" %>
+		<ul class="submenu">
+				<li><a class="current" href="javascript: void(0);">what we do</a></li>
+				<ul id="about-category-list" class="subsubmenu">
+					<% categories_list = Category.get(1).children.find_all{|c| c.show_on_homepage } %>
+					<% categories_list.each do |category| %>
+						<li><%= link_to category.name, category, :title => category.name %></li>
+					<% end %>
+				</ul>
+		</ul>
+	</div><!-- EOF DIV 'submenu' -->
+<% end %>	
