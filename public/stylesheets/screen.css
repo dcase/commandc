@@ -582,6 +582,9 @@ img#the_scoop {
 	width: 325px;
 	line-height: 17px;
 }
+.about.is_webkit .copy {
+	width: 331px;
+}
 img#about-rabbit {
 	position: absolute;
 	bottom: 0;
