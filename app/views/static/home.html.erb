@@ -26,7 +26,7 @@
 	us for the ensuing couple&#x27;s therapy, 
 	we can't help it if you fall in love…</p>
 </div>
-<%= link_to image_tag( 'goodstuff.gif', :size => "389x50", :alt => yield(:alt_prefix) + "the good stuff", :mouseover => 'goodstuff_ro.gif'), portfolio_path, :title => "the good stuff" %>
+<%= link_to image_tag( 'goodstuff.gif', :id => "goodstuff", :size => "389x50", :alt => yield(:alt_prefix) + "the good stuff", :mouseover => 'goodstuff_ro.gif'), portfolio_path, :title => "the good stuff" %>
 
 <% content_for :sidebar do %>
 	<% if @recent_projects %>
