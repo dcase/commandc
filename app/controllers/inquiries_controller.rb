@@ -1,4 +1,5 @@
 class InquiriesController < ApplicationController
+  has_rakismet
   before_filter :permission, :except => [:new,:create]
   
   # GET /inquiries
@@ -43,6 +44,8 @@ class InquiriesController < ApplicationController
   # POST /inquiries.xml
   def create
     @inquiry = Inquiry.new(params[:inquiry])
+    @inquiry.request = request
+    @inquiry.is_spam = @inquiry.spam?
 
     respond_to do |format|
       if @inquiry.save

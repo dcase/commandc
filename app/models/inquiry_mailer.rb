@@ -2,7 +2,7 @@ class InquiryMailer < ActionMailer::Base
   
 
   def inquiry(inquiry)
-    subject    'new inquiry from commandc.com'
+    subject    proc { inquiry.is_spam ? '**SPAM** inquiry from commandc.com' : 'new inquiry from commandc.com' }
     recipients 'info@commandc.com'
     from       'COMMAND C inquiry <inquiries@commandc.com>'
     content_type 'text/html'
