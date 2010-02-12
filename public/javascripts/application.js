@@ -24,6 +24,6 @@ Event.observe(window, "load", function() {
 	$("contact-submit").down("input").observe("click", function(event) {
 		button = Event.element(event);
 		button.replace($("working").innerHTML);
-		return true;
+		$("new_inquiry").submit();
 	});
 });
