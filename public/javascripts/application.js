@@ -23,6 +23,6 @@ Event.observe(window, "load", function() {
 	}
 	$("contact-submit").down("input").observe("click", function(event) {
 		this.replace($("working").innerHTML);
-		this.up('form').submit();
+		$(this).up('form').submit();
 	});
 });
