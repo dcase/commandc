@@ -923,7 +923,8 @@ div#inquire_caption {
 .errorExplanation img {
 	vertical-align: middle;
 }
-.fieldWithErrors input {
+.fieldWithErrors input,
+.fieldWithErrors textarea {
 	background: #fcfccc;
 }
 
