@@ -22,7 +22,8 @@ Event.observe(window, "load", function() {
 		$(document.body).addClassName("is_webkit");
 	}
 	$("contact-submit").down("input").observe("click", function(event) {
-		this.replace($("working").innerHTML);
-		$(this).up('form').submit();
+		button = Event.element(event);
+		button.replace($("working").innerHTML);
+		return true;
 	});
 });
