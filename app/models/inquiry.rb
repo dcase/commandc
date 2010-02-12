@@ -6,10 +6,7 @@ class Inquiry < ActiveRecord::Base
     :author_email => :email,
     :comment_type => "inquiry",
     :permalink => "http://www.commandc.com/contact-us.html/new",
-    :content => :description,
-    :user_ip => user_ip,
-    :user_agent => user_agent,
-    :referrer => referrer
+    :content => :description
     
   def request=(request)
     self.user_ip    = request.remote_ip
