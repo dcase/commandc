@@ -23,7 +23,7 @@ Event.observe(window, "load", function() {
 	}
 	$("contact-submit").down("input").observe("click", function(event) {
 		button = Event.element(event);
-		button.replace($("working").innerHTML);
-		$("new_inquiry").submit();
+		button.hide();
+		$("working").show();
 	});
 });
