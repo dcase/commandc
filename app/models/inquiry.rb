@@ -1,5 +1,5 @@
 class Inquiry < ActiveRecord::Base
-  validates_presence_of :name, :email
+  validates_presence_of :name, :email, :description
   
   has_rakismet :author => :name, 
     :author_url => :url,
