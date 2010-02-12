@@ -21,7 +21,8 @@ Event.observe(window, "load", function() {
 	if (Prototype.Browser.WebKit) {
 		$(document.body).addClassName("is_webkit");
 	}
-	$("contact-submit").down("input").observe("click", function() {
+	$("contact-submit").down("input").observe("click", function(event) {
+		event.element.hide();
 		$("working").show();
 	});
 });
